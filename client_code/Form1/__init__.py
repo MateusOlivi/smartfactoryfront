@@ -21,21 +21,18 @@ class Form1(Form1Template):
 #     self.build_weather_graph()
      
   def set_last_temp(self):
-    #self.revenue_label.text = "{}, {:,}".format(max_revenue['date'].strftime("%d %b %Y"), max_revenue['amount'])
-
       data = anvil.server.call('get_temp_history')
       
       last_temp = max(data, key = lambda x: x["datetime"])["temperature"]
       
       self.last_temp.text = f"{last_temp}°"
             
-      #self.plot_1.data = go.Bar(y=[100,400,200,300,500])
       self.plot_1.data = go.Scatter(x = [x['datetime'] for x in data],
                                y = [x['temperature'] for x in data],
                                       lines=dict(color='#2196f3'))
       self.style_plot(self.plot_1)
       self.plot_1.layout.title = "Temperatura"
-    
+#    
 #   def build_signups_graph(self):
 #     signups = anvil.server.call('get_user_signups')
 #     scatter = go.Scatter(x = [x['date'] for x in signups],
@@ -105,6 +102,7 @@ class Form1(Form1Template):
                 size=11,
                 color='#808080'
             ),
+          rangemode = "tozero"
         ))
 
 
