@@ -9,7 +9,7 @@ services:
 cta: {preset: dashboard_tutorial}
 package_name: Dashboardwalkthrough
 allow_embedding: false
-name: Projeto_Teste
+name: MC855
 runtime_options: {version: 2, server_version: python3-sandbox, client_version: '3',
   server_spec: null}
 metadata: {}
