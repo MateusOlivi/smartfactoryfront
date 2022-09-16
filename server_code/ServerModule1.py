@@ -18,13 +18,13 @@ def get_temp_history():
     
     return my_history
 
-def get_temp_limit():
-    
-    my_history = []
-    for i in range(1,10):
-      my_history.extend([{'datetime':f'2022-09-{i}T{j}:00:00', 'temperature': random.uniform(20,27)} for j in range(1, 24)])
-    
-    return my_history
+@anvil.server.callable
+def get_limite():
+  return app_tables.limite.search()
+
+@anvil.server.callable
+def set_limite(my_limit):
+  return app_tables.limite.add_row(Limite=my_limit)
 
   
   

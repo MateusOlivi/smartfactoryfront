@@ -9,7 +9,20 @@ class Admin(AdminTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    self.get_limit()
+  
+  def get_limit(self):
+    my_data = anvil.server.call('get_limite')
+    my_limit = list(my_data)[-1]["Limite"]
+    
+    self.limit.text = my_limit
+    
+    
+  def button_1_click(self, **event_args):
+    my_limit = int(self.limit.text)
+    anvil.server.call('set_limite', my_limit)
+    
+    
 
-    # Any code you write here will run when the form opens.
 
 
