@@ -1,4 +1,4 @@
-from ._anvil_designer import Form1Template
+from ._anvil_designer import DashBoardTemplate
 from anvil import *
 import anvil.server
 import anvil.tables as tables
@@ -7,19 +7,12 @@ from anvil.tables import app_tables
 import plotly.graph_objects as go
 from datetime import datetime
 
-class Form1(Form1Template):
-
+class DashBoard(DashBoardTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     self.set_last_temp()
     self.set_max_temp()
-    
-    # Any code you write here will run when the form opens.
-#     self.set_daily_temp()
-#     self.build_signups_graph()
-#     self.build_marketing_graph()
-#     self.build_weather_graph()
      
   def set_last_temp(self):
       data = anvil.server.call('get_temp_history')
@@ -89,7 +82,6 @@ class Form1(Form1Template):
             ),
           rangemode = "tozero"
         ))
-
 
 
 
