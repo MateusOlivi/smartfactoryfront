@@ -20,11 +20,11 @@ def get_temp_history():
 
 @anvil.server.callable
 def get_limite():
-  return app_tables.limite.search()
+  return {"Limite": 25}
 
 @anvil.server.callable
 def set_limite(my_limit):
-  return app_tables.limite.add_row(Limite=my_limit)
+  pass
 
   
   

@@ -13,7 +13,7 @@ class Admin(AdminTemplate):
   
   def get_limit(self):
     my_data = anvil.server.call('get_limite')
-    my_limit = list(my_data)[-1]["Limite"]
+    my_limit = my_data["Limite"]
     
     self.limit.text = my_limit
     
