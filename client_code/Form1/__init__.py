@@ -12,6 +12,7 @@ class Form1(Form1Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    self.navbar_links.background = "#fffffff"
     self.set_last_temp()
     self.set_max_temp()
     
@@ -37,62 +38,30 @@ class Form1(Form1Template):
   def set_max_temp(self):
       data = anvil.server.call('get_temp_history')
       
-      dates = [date["datetime"].split("T")[0] for date in data]
-      
-      dates = list(set(dates))
-      
-      print(dates)
-#       self.last_temp.text = f"{last_temp}°"
-            
-#       self.plot_1.data = go.Scatter(x = [x['datetime'] for x in data],
-#                                     y = [x['temperature'] for x in data],
-#                                       lines=dict(color='#2196f3'))
-#       self.style_plot(self.plot_1)
-#       self.plot_1.layout.title = "Max Temperatura x Dia"
-#    
-#   def build_signups_graph(self):
-#     signups = anvil.server.call('get_user_signups')
-#     scatter = go.Scatter(x = [x['date'] for x in signups],
-#                          y = [x['signups'] for x in signups],
-#                          fill = 'tozeroy',
-#                          line=dict(color='#2196f3'))
-#     self.plot_2.data = scatter
-#     self.style_plot(self.plot_2)
-#     self.plot_2.layout.title = "USER SIGNUPS"
-#     max_signups = sorted(signups, key=lambda x: x['signups'], reverse=True)[0]
-#     self.signups_label.text = "%s, %d" % (max_signups['date'].strftime("%d %b %Y"), max_signups['signups'])
-
-     
-#   def build_marketing_graph(self):
-#     marketing_data = anvil.server.call('get_marketing_data')
-#     self.plot_3.data = go.Scatter(x = [x['strategy'] for x in marketing_data],
-#                                y = [x['count'] for x in marketing_data],
-#                               mode='lines+markers',
-#                               line=dict(color='#2196f3'))
-#     self.style_plot(self.plot_3)
-#     self.plot_3.layout.title = "HITS BY MARKETING STRATEGY"
-#     max_hits = sorted(marketing_data, key=lambda x: x['count'], reverse=True)[0]
-#     self.marketing_label.text = "%s, %d hits" % (max_hits['strategy'], max_hits['count'])
+      for my_data in data:
+        my_data["datetime"] = my_data["datetime"].split("T")[0]
         
-#   def build_weather_graph(self):
-#     # Retrieve data from api. We'll use latitude and longitude for Cambridge for this example.
-#     weather_data = anvil.server.call('get_weather_data', 52.2053, 0.1218)
-#     # Add time and temperature data from api to our temp_data variable.
-#     self.temp_data.append({'time':weather_data['time'], 'temp':weather_data['temp']})
-#     self.style_plot(self.plot_4)
-#     self.plot_4.layout.title = "REAL-TIME TEMPERATURE DATA: CAMBRIDGE"
-#     self.plot_4.layout.yaxis.title = "Temperature, Fahrenheit"
-#     self.plot_4.data = go.Scatter(y=[x['temp'] for x in self.temp_data], 
-#                                   x=[x['time'] for x in self.temp_data], 
-#                                   line=dict(color='#2196f3'))
-    
-#     max_temp = sorted(self.temp_data, key=lambda x: x['temp'], reverse=True)[0]
-#     self.weather_label.text = "%.1f" % max_temp['temp']
-    
-#   def timer_1_tick(self, **event_args):
-#     """This method is called Every [interval] seconds. Does not trigger if [interval] is 0."""
-#     with anvil.server.no_loading_indicator:
-#       self.build_weather_graph()
+      data.sort(key = lambda x: x["temperature"], reverse = True)
+      data.sort(key = lambda x: x["datetime"])
+      
+      result = []
+      added = []
+      for my_data in data:
+        date = my_data["datetime"]
+        if(date not in added):
+          added.append(date)
+          result.append(my_data)
+          
+      last_temp = max(result, key = lambda x: x["datetime"])["temperature"]
+
+      
+      self.max_daily_temp.text = f"{last_temp}°"
+            
+      self.plot_2.data = go.Scatter(x = [x['datetime'] for x in result],
+                                    y = [x['temperature'] for x in result],
+                                      lines=dict(color='#2196f3'))
+      self.style_plot(self.plot_2)
+      self.plot_2.layout.title = "Max Temperatura x Dia"
     
   def style_plot(self, plot):
     # expand the graphs
@@ -121,6 +90,7 @@ class Form1(Form1Template):
             ),
           rangemode = "tozero"
         ))
+
 
 
 
