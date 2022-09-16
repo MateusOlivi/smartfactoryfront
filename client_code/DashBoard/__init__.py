@@ -83,6 +83,11 @@ class DashBoard(DashBoardTemplate):
           rangemode = "tozero"
         ))
 
+#   def timer_1_tick(self, **event_args):
+#     with anvil.server.no_loading_indicator:
+#       self.set_last_temp()
+
+
 
 
 

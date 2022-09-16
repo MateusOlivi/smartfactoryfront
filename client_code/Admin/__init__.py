@@ -22,7 +22,7 @@ class Admin(AdminTemplate):
     my_limit = int(self.limit.text)
     anvil.server.call('set_limite', my_limit)
     
-    
+
 
 
 
