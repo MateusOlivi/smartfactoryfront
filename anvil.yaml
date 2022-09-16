@@ -6,7 +6,7 @@ services:
 - source: /runtime/services/anvil/secrets.yml
   client_config: {}
   server_config: {}
-cta: {preset: dashboard_tutorial, hint_run_immediately: true}
+cta: {preset: dashboard_tutorial}
 package_name: Dashboardwalkthrough
 allow_embedding: false
 name: Business Dashboard (3)
