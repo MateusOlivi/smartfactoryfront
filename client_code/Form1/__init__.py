@@ -12,7 +12,6 @@ class Form1(Form1Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    self.navbar_links.background = "#fffffff"
     self.set_last_temp()
     self.set_max_temp()
     
