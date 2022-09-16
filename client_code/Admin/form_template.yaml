@@ -8,6 +8,13 @@ components:
   layout_properties: {slot: default}
   components:
   - type: Label
+    properties: {role: headline, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Configurações, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_3
+    layout_properties: {grid_position: 'BGKYAC,RHCESW'}
+  - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: 'Temperatura Limite: ', font_size: null, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
@@ -26,6 +33,26 @@ components:
     name: button_1
     layout_properties: {grid_position: 'QAAMOI,UHPOHL'}
     event_bindings: {click: button_1_click}
+  - type: Label
+    properties: {role: headline, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Usuários, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2
+    layout_properties: {grid_position: 'LISDCZ,BXVGBX'}
+  - type: DataGrid
+    properties:
+      columns:
+      - {id: WZNRHL, title: Column 1, data_key: column_1}
+      - {id: ORTXKX, title: Column 2, data_key: column_2}
+      - {id: TKNVXW, title: Column 3, data_key: column_3}
+    name: data_grid_1
+    layout_properties: {grid_position: 'TJPSCB,XTARZS'}
+    components:
+    - type: RepeatingPanel
+      properties: {spacing_above: none, spacing_below: none, item_template: Admin.RowTemplate1}
+      name: repeating_panel_1
+      layout_properties: {}
 - type: FlowPanel
   properties: {}
   name: navbar_links
