@@ -13,6 +13,7 @@ class Form1(Form1Template):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     self.set_last_temp()
+    self.set_max_temp()
     
     # Any code you write here will run when the form opens.
 #     self.set_daily_temp()
@@ -31,7 +32,23 @@ class Form1(Form1Template):
                                y = [x['temperature'] for x in data],
                                       lines=dict(color='#2196f3'))
       self.style_plot(self.plot_1)
-      self.plot_1.layout.title = "Temperatura"
+      self.plot_1.layout.title = "Temperatura x Tempo"
+  
+  def set_max_temp(self):
+      data = anvil.server.call('get_temp_history')
+      
+      dates = [date["datetime"].split("T")[0] for date in data]
+      
+      dates = list(set(dates))
+      
+      print(dates)
+#       self.last_temp.text = f"{last_temp}°"
+            
+#       self.plot_1.data = go.Scatter(x = [x['datetime'] for x in data],
+#                                     y = [x['temperature'] for x in data],
+#                                       lines=dict(color='#2196f3'))
+#       self.style_plot(self.plot_1)
+#       self.plot_1.layout.title = "Max Temperatura x Dia"
 #    
 #   def build_signups_graph(self):
 #     signups = anvil.server.call('get_user_signups')
@@ -104,6 +121,9 @@ class Form1(Form1Template):
             ),
           rangemode = "tozero"
         ))
+
+
+
 
 
 
