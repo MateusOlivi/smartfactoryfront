@@ -19,7 +19,7 @@ class DashBoard(DashBoardTemplate):
       
       last_temp = max(data, key = lambda x: x["datetime"])["temperature"]
       
-      self.last_temp.text = f"{last_temp}°"
+      self.last_temp.text = f"{last_temp}"
             
       self.plot_1.data = go.Scatter(x = [x['datetime'] for x in data],
                                y = [x['temperature'] for x in data],
@@ -47,7 +47,7 @@ class DashBoard(DashBoardTemplate):
       last_temp = max(result, key = lambda x: x["datetime"])["temperature"]
 
       
-      self.max_daily_temp.text = f"{last_temp}°"
+      self.max_daily_temp.text = f"{last_temp}"
             
       self.plot_2.data = go.Scatter(x = [x['datetime'] for x in result],
                                     y = [x['temperature'] for x in result],
