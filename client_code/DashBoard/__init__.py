@@ -1,11 +1,7 @@
 from ._anvil_designer import DashBoardTemplate
-from anvil import *
-import anvil.server
-import anvil.tables as tables
-import anvil.tables.query as q
-from anvil.tables import app_tables
 import plotly.graph_objects as go
-from time import time
+import anvil.server
+from .. import routes
 
 class DashBoard(DashBoardTemplate):
   def __init__(self, **properties):
@@ -15,7 +11,7 @@ class DashBoard(DashBoardTemplate):
     self.set_max_temp()
      
   def set_last_temp(self):
-      data = anvil.server.call('get_temp_history')
+      data = routes.get_temp_history()
       
       last_temp = max(data, key = lambda x: x["time"])["temperature"]
       
@@ -28,7 +24,7 @@ class DashBoard(DashBoardTemplate):
       self.plot_1.layout.title = "Temperatura x Tempo"
   
   def set_max_temp(self):
-      data = anvil.server.call('get_temp_history')
+      data = routes.get_temp_history()
       
       for my_data in data:
         my_data["time"] = my_data["time"].split("T")[0]
@@ -83,9 +79,9 @@ class DashBoard(DashBoardTemplate):
           rangemode = "tozero"
         ))
 
-#   def timer_1_tick(self, **event_args):
-#     with anvil.server.no_loading_indicator:
-#       self.set_last_temp()
+  # def timer_1_tick(self, **event_args):
+  #   with anvil.server.no_loading_indicator:
+  #     self.set_last_temp()
 
 
 

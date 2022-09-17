@@ -1,15 +1,6 @@
-import anvil.secrets
-import anvil.tables as tables
-import anvil.tables.query as q
-from anvil.tables import app_tables
-import anvil.server
-from datetime import datetime
 import random
-#import psycopg2 
 import anvil.http
-import random
-  
-@anvil.server.callable
+
 def get_temp_history():
     
     my_history = []
@@ -18,11 +9,9 @@ def get_temp_history():
     
     return my_history
 
-@anvil.server.callable
 def get_limite():
   return { "Limite": 25 }
 
-@anvil.server.callable
 def get_users():
   return [
     { 
@@ -45,7 +34,6 @@ def get_users():
     }
   ] 
     
-@anvil.server.callable
 def set_limite(my_limit):
   pass
 
