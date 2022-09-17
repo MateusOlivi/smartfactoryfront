@@ -22,7 +22,9 @@ class Admin(AdminTemplate):
     my_limit = int(self.limit.text)
     
     anvil.server.call('set_limite', my_limit)
-    
+    from datetime import datetime
+
+    print(datetime.now())
     print(self.painel.items)
     
 

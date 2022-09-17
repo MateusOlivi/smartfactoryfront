@@ -5,7 +5,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 import plotly.graph_objects as go
-from datetime import datetime
+from time import time
 
 class DashBoard(DashBoardTemplate):
   def __init__(self, **properties):
@@ -17,11 +17,11 @@ class DashBoard(DashBoardTemplate):
   def set_last_temp(self):
       data = anvil.server.call('get_temp_history')
       
-      last_temp = max(data, key = lambda x: x["datetime"])["temperature"]
+      last_temp = max(data, key = lambda x: x["time"])["temperature"]
       
       self.last_temp.text = f"{last_temp}"
             
-      self.plot_1.data = go.Scatter(x = [x['datetime'] for x in data],
+      self.plot_1.data = go.Scatter(x = [x['time'] for x in data],
                                y = [x['temperature'] for x in data],
                                       lines=dict(color='#2196f3'))
       self.style_plot(self.plot_1)
@@ -31,25 +31,25 @@ class DashBoard(DashBoardTemplate):
       data = anvil.server.call('get_temp_history')
       
       for my_data in data:
-        my_data["datetime"] = my_data["datetime"].split("T")[0]
+        my_data["time"] = my_data["time"].split("T")[0]
         
       data.sort(key = lambda x: x["temperature"], reverse = True)
-      data.sort(key = lambda x: x["datetime"])
+      data.sort(key = lambda x: x["time"])
       
       result = []
       added = []
       for my_data in data:
-        date = my_data["datetime"]
+        date = my_data["time"]
         if(date not in added):
           added.append(date)
           result.append(my_data)
           
-      last_temp = max(result, key = lambda x: x["datetime"])["temperature"]
+      last_temp = max(result, key = lambda x: x["time"])["temperature"]
 
       
       self.max_daily_temp.text = f"{last_temp}"
             
-      self.plot_2.data = go.Scatter(x = [x['datetime'] for x in result],
+      self.plot_2.data = go.Scatter(x = [x['time'] for x in result],
                                     y = [x['temperature'] for x in result],
                                       lines=dict(color='#2196f3'))
       self.style_plot(self.plot_2)

@@ -7,7 +7,7 @@ services:
   client_config: {}
   server_config: {}
 cta: {preset: dashboard_tutorial}
-package_name: Dashboardwalkthrough
+package_name: MC855
 allow_embedding: false
 name: MC855
 runtime_options: {version: 2, server_version: python3-sandbox, client_version: '3',

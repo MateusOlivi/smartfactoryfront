@@ -14,13 +14,13 @@ def get_temp_history():
     
     my_history = []
     for i in range(1,10):
-      my_history.extend([{'datetime':f'2022-09-{i}T{j}:00:00', 'temperature': random.uniform(20,27)} for j in range(1, 24)])
+      my_history.extend([{'time':f'2022-09-{i}T{j}:00:00', 'temperature': random.uniform(20,27)} for j in range(1, 24)])
     
     return my_history
 
 @anvil.server.callable
 def get_limite():
-  return {"Limite": 25}
+  return { "Limite": 25 }
 
 @anvil.server.callable
 def get_users():
@@ -43,8 +43,8 @@ def get_users():
       "email": "Exemplo3@gmail.com",
       "acesso": "User"
     }
-  ]
-
+  ] 
+    
 @anvil.server.callable
 def set_limite(my_limit):
   pass
