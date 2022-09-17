@@ -23,6 +23,29 @@ def get_limite():
   return {"Limite": 25}
 
 @anvil.server.callable
+def get_users():
+  return [
+    { 
+      "id": '1',
+      "nome": "Exemplo 1",
+      "email": "Exemplo1@gmail.com",
+      "acesso": "Admin"
+    },
+    { 
+      "id": '2',
+      "nome": "Exemplo 2",
+      "email": "Exemplo2@gmail.com",
+      "acesso": "User"
+    },
+    { 
+      "id": '3',
+      "nome": "Exemplo 3",
+      "email": "Exemplo3@gmail.com",
+      "acesso": "User"
+    }
+  ]
+
+@anvil.server.callable
 def set_limite(my_limit):
   pass
 

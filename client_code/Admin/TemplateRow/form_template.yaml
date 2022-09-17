@@ -1,0 +1,29 @@
+container:
+  type: DataRowPanel
+  event_bindings: {}
+components:
+- type: DropDown
+  properties:
+    role: null
+    align: full
+    tooltip: ''
+    placeholder: ''
+    border: ''
+    enabled: true
+    foreground: ''
+    items: ['']
+    visible: true
+    font_size: null
+    font: ''
+    spacing_above: small
+    spacing_below: small
+    italic: false
+    background: ''
+    bold: false
+    underline: false
+    include_placeholder: false
+  name: dropdown_acesso
+  layout_properties: {column: CZHRVL}
+  data_bindings:
+  - {property: selected_value, code: 'self.item[''acesso'']', writeback: true}
+is_package: true

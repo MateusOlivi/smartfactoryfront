@@ -25,14 +25,6 @@ components:
     properties: {}
     name: limit
     layout_properties: {grid_position: 'NXDBZF,NFOPNJ'}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Aplicar, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: button_1
-    layout_properties: {grid_position: 'QAAMOI,UHPOHL'}
-    event_bindings: {click: button_1_click}
   - type: Label
     properties: {role: headline, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: Usuários, font_size: null, font: '', spacing_above: small,
@@ -42,16 +34,29 @@ components:
     layout_properties: {grid_position: 'LISDCZ,BXVGBX'}
   - type: DataGrid
     properties:
+      role: null
       columns:
-      - {id: WZNRHL, title: Column 1, data_key: column_1}
-      - {id: ORTXKX, title: Column 2, data_key: column_2}
-      - {id: TKNVXW, title: Column 3, data_key: column_3}
+      - {id: XJBZOL, title: Id, data_key: id}
+      - {id: QNKGWL, title: Nome, data_key: nome}
+      - {id: SDFTNJ, title: Email, data_key: email}
+      - {id: CZHRVL, title: Acesso, data_key: ''}
+      auto_header: true
+      tooltip: ''
+      border: ''
+      foreground: ''
+      rows_per_page: 20
+      visible: true
+      wrap_on: never
+      show_page_controls: true
+      spacing_above: small
+      spacing_below: small
+      background: ''
     name: data_grid_1
-    layout_properties: {grid_position: 'TJPSCB,XTARZS'}
+    layout_properties: {grid_position: 'JOGANW,GYPFLH'}
     components:
     - type: RepeatingPanel
-      properties: {spacing_above: none, spacing_below: none, item_template: Admin.RowTemplate1}
-      name: repeating_panel_1
+      properties: {spacing_above: none, spacing_below: none, item_template: Admin.TemplateRow}
+      name: painel
       layout_properties: {}
 - type: FlowPanel
   properties: {}
@@ -68,4 +73,12 @@ components:
     icon: ''}
   name: label_1
   layout_properties: {slot: title}
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Aplicar, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: button_1
+  layout_properties: {grid_position: 'QAAMOI,UHPOHL', slot: default}
+  event_bindings: {click: button_aplicar}
 is_package: true
