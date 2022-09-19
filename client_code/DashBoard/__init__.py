@@ -9,7 +9,7 @@ class DashBoard(DashBoardTemplate):
     self.init_components(**properties)
     self.set_last_temp()
     self.set_max_temp()
-     
+         
   def set_last_temp(self):
       data = routes.get_temp_history()
       
@@ -21,7 +21,9 @@ class DashBoard(DashBoardTemplate):
                                y = [x['temperature'] for x in data],
                                       lines=dict(color='#2196f3'))
       self.style_plot(self.plot_1)
+      
       self.plot_1.layout.title = "Temperatura x Tempo"
+
   
   def set_max_temp(self):
       data = routes.get_temp_history()
@@ -49,6 +51,7 @@ class DashBoard(DashBoardTemplate):
                                     y = [x['temperature'] for x in result],
                                       lines=dict(color='#2196f3'))
       self.style_plot(self.plot_2)
+      
       self.plot_2.layout.title = "Max Temperatura x Dia"
     
   def style_plot(self, plot):
@@ -77,12 +80,13 @@ class DashBoard(DashBoardTemplate):
                 color='#808080'
             ),
           rangemode = "tozero"
+          
         ))
 
-#   def timer_1_tick(self, **event_args):
-#     with anvil.server.no_loading_indicator:
-#       self.set_last_temp()
-#       self.set_max_temp()
+  def timer_1_tick(self, **event_args):
+    with anvil.server.no_loading_indicator:
+      self.set_last_temp()
+      self.set_max_temp()
 
 
 
