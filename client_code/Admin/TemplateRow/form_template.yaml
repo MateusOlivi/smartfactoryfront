@@ -22,8 +22,8 @@ components:
     bold: false
     underline: false
     include_placeholder: false
-  name: dropdown_acesso
+  name: dropdown_access
   layout_properties: {column: CZHRVL}
   data_bindings:
-  - {property: selected_value, code: 'self.item[''acesso'']', writeback: true}
+  - {property: selected_value, code: 'self.item[''access'']', writeback: true}
 is_package: true

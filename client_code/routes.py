@@ -10,27 +10,27 @@ def get_temp_history():
     return my_history
 
 def get_limite():
-  return { "Limite": 25 }
+  return { "limit": 25 }
 
 def get_users():
   return [
     { 
       "id": '1',
-      "nome": "Exemplo 1",
+      "name": "Exemplo 1",
       "email": "Exemplo1@gmail.com",
-      "acesso": "Admin"
+      "access": "Admin"
     },
     { 
       "id": '2',
-      "nome": "Exemplo 2",
+      "name": "Exemplo 2",
       "email": "Exemplo2@gmail.com",
-      "acesso": "User"
+      "access": "User"
     },
     { 
       "id": '3',
-      "nome": "Exemplo 3",
+      "name": "Exemplo 3",
       "email": "Exemplo3@gmail.com",
-      "acesso": "User"
+      "access": "User"
     }
   ] 
     

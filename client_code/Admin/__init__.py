@@ -11,7 +11,7 @@ class Admin(AdminTemplate):
   
   def get_limit(self):
     my_data = routes.get_limite()
-    my_limit = my_data["Limite"]
+    my_limit = my_data["limit"]
     
     self.limit.text = my_limit
     
@@ -19,10 +19,6 @@ class Admin(AdminTemplate):
     my_limit = int(self.limit.text)
     
     routes.set_limite()
-    from datetime import datetime
-
-    print(datetime.now())
-    print(self.painel.items)
     
 
 
