@@ -10,13 +10,13 @@ class Sensores(SensoresTemplate):
     self.init_components(**properties)
     self.repeating_panel_1.items = [{
       "id":1,
-      "name": "Temperatura",
-      "value": 30,
+      "name": "Temperatura 1",
+      "limit": 30,
       "url": "https://www.paresteck.com.br/5400-large_default/arduino-sensor-de-temperatura-e-umidade-dht11.jpg"
     },{
       "id":2,
-      "name": "Umidade",
-      "value": 10,
+      "name": "Temperatura 2",
+      "limit": 5,
       "url": "https://www.paresteck.com.br/5400-large_default/arduino-sensor-de-temperatura-e-umidade-dht11.jpg"
     }]
 

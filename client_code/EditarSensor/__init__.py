@@ -11,6 +11,6 @@ class EditarSensor(EditarSensorTemplate):
     
     self.image.source = properties["item"]["url"]
     self.text_name.text = properties["item"]["name"]
-    self.text_value.text = properties["item"]["value"]
+    self.text_limit.text = properties["item"]["limit"]
     # Any code you write here will run when the form opens.
     
