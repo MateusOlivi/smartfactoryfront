@@ -16,7 +16,7 @@ class MenuLateral(MenuLateralTemplate):
     open_form('DashBoard')
 
   def button_2_click(self, **event_args):
-    open_form('Admin')
+    open_form('Usuarios')
     
   def button_3_click(self, **event_args):
     open_form('Sensores')
