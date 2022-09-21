@@ -1,0 +1,59 @@
+container:
+  type: HtmlTemplate
+  properties: {html: '@theme:standard-page.html'}
+components:
+- type: ColumnPanel
+  properties: {col_widths: '{"ULYAWY":30,"DDJJIU":30}'}
+  name: content_panel
+  layout_properties: {slot: default}
+  components:
+  - type: Image
+    properties: {height: 157}
+    name: image
+    layout_properties: {grid_position: 'BVMOBJ,PJYZXG'}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Nome, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_nome
+    layout_properties: {grid_position: 'LYJKIS,ULYAWY'}
+  - type: TextBox
+    properties: {}
+    name: text_name
+    layout_properties: {grid_position: 'LYJKIS,DDJJIU'}
+  - type: ColumnPanel
+    properties: {col_widths: '{}'}
+    name: content_panel_copy
+    layout_properties:
+      col_widths: {}
+      grid_position: QUTAPM,TIJWVI
+    components:
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Limite, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_limit
+      layout_properties: {grid_position: 'LYJKIS,ULYAWY'}
+    - type: TextBox
+      properties: {}
+      name: text_limit
+      layout_properties: {grid_position: 'LYJKIS,DDJJIU'}
+- type: FlowPanel
+  properties: {}
+  name: navbar_links
+  layout_properties: {slot: nav-right}
+- type: form:MenuLateral
+  properties: {}
+  name: menu_lateral_1
+  layout_properties: {slot: left-nav}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: 'Editar Sensor
+
+      ', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
+    italic: false, background: '', bold: false, underline: false, icon: ''}
+  name: label_1
+  layout_properties: {slot: title}
+is_package: true
