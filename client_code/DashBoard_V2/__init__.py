@@ -1,20 +1,13 @@
-from ._anvil_designer import SensoresTemplate
+from ._anvil_designer import DashBoard_V2Template
 from anvil import *
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-from .. import routes
 
-class Sensores(SensoresTemplate):
+class DashBoard_V2(DashBoard_V2Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    self.repeating_panel_1.items = routes.get_sensors(100)
 
     # Any code you write here will run when the form opens.
     
-
-  def drop_down_1_change(self, **event_args):
-    """This method is called when an item is selected"""
-    pass
-
