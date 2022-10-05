@@ -22,10 +22,10 @@ components:
   properties:
     role: null
     columns:
-    - {id: MQLUCJ, title: '', data_key: img_url}
-    - {id: GYGQNK, title: Id, data_key: id}
-    - {id: UKJVIP, title: Nome, data_key: name}
-    - {id: DVQSON, title: '', data_key: ''}
+    - {id: MQLUCJ, title: Id, data_key: id}
+    - {id: GYGQNK, title: Nome, data_key: name}
+    - {id: UKJVIP, title: Local, data_key: located_at}
+    - {id: DVQSON, title: '', data_key: '', expand: false}
     auto_header: true
     tooltip: ''
     border: ''

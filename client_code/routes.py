@@ -1,6 +1,20 @@
 import random
 import anvil.http
 
+def sensor_builder(sensor_id):
+    name_list = ["Temperature", "Humidity", "Potency"]
+    locates = ["Room", "Boiler", "Cooler"]
+
+    return {
+        "id": sensor_id,
+        "name": name_list[random.randint(0,len(name_list)-1)] + f"_{random.randint(0,999)}",
+        "located_at": locates[random.randint(0,len(locates)-1)] + f"_{random.randint(0,999)}",
+        "limit_value": random.randint(30, 50)
+    }
+
+def get_sensors(n):
+    return [sensor_builder(i) for i in range(1, n+1)]
+  
 def get_temp_history():
     
     my_history = []

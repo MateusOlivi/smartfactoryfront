@@ -8,10 +8,4 @@ components:
   name: button_1
   layout_properties: {column: DVQSON}
   event_bindings: {click: button_1_click}
-- type: Image
-  properties: {height: 41}
-  name: image_1
-  layout_properties: {column: MQLUCJ}
-  data_bindings:
-  - {property: source, code: 'self.item[''url'']'}
 is_package: true
