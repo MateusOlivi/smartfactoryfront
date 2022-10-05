@@ -1,5 +1,7 @@
 import random
 import anvil.http
+import datetime
+import math
 
 def sensor_builder(sensor_id):
     name_list = ["Temperature", "Humidity", "Potency"]
@@ -12,20 +14,24 @@ def sensor_builder(sensor_id):
         "limit_value": random.randint(30, 50)
     }
 
+def build_temp_history(sensor_id, n_days):
+    base = datetime.datetime.today()
+    date_list = [str(base - datetime.timedelta(days=x, hours=y)) for x in range(n_days) for y in range(0,25)]
+
+    temp_history = [{
+        "timestamp": date,
+        "value": random.uniform(21,25) + 10*math.log10(sensor_id)
+    } for date in date_list]
+    
+    return temp_history
+
 def get_sensors(n):
     return [sensor_builder(i) for i in range(1, n+1)]
+
+
+def get_history(sensor_id, n_days):
+    return build_temp_history(sensor_id, n_days)
   
-def get_temp_history():
-    
-    my_history = []
-    for i in range(1,10):
-      my_history.extend([{'time':f'2022-09-{i}T{j}:00:00', 'temperature': random.uniform(20,27)} for j in range(1, 24)])
-    
-    return my_history
-
-def get_limite():
-  return { "limit": 25 }
-
 def get_users():
   return [
     { 
