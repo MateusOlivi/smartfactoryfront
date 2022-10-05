@@ -22,4 +22,8 @@ components:
     icon: ''}
   name: label_1
   layout_properties: {slot: title}
+- type: form:MenuLateral
+  properties: {}
+  name: menu_lateral_1
+  layout_properties: {slot: left-nav}
 is_package: true
