@@ -1,0 +1,94 @@
+container: {type: ColumnPanel}
+components:
+- type: ColumnPanel
+  properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"FDTMGR":15,"BMDARN":15,"JZLDIB":30}',
+    spacing_below: small, background: ''}
+  name: card_4
+  layout_properties:
+    col_widths: {}
+    grid_position: JFECEC,AHURXO
+    full_width_row: true
+  components:
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Id, font_size: null, font: '', spacing_above: small, icon_align: left,
+      spacing_below: small, italic: false, background: '', bold: true, underline: false,
+      icon: ''}
+    name: label_id
+    layout_properties: {grid_position: 'LFQCZD,FDTMGR JZPCPO,KTROCO'}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Nome, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+      underline: false, icon: ''}
+    name: label_name
+    layout_properties:
+      col_widths: {}
+      grid_position: LFQCZD,FDTMGR MUPFRQ,MTZVUG
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Limite, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+      underline: false, icon: ''}
+    name: label_limit
+    layout_properties:
+      col_widths: {}
+      grid_position: LFQCZD,FDTMGR KNORZO,MQJBYH
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Valor Atual, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+      underline: false, icon: ''}
+    name: label_current_temp
+    layout_properties: {grid_position: 'LFQCZD,FDTMGR AQOFZF,HKVNZB'}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Maior Valor, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+      underline: false, icon: ''}
+    name: label_max_temp
+    layout_properties: {grid_position: 'LFQCZD,FDTMGR JYIHRS,CGAEES'}
+  - type: Label
+    properties: {}
+    name: show_id
+    layout_properties: {grid_position: 'LFQCZD,BMDARN ONQVTI,UEWZKE'}
+    data_bindings:
+    - {property: text, code: 'self.item[''id'']'}
+  - type: Label
+    properties: {}
+    name: show_name
+    layout_properties: {grid_position: 'LFQCZD,BMDARN AFNQYB,MFHDDY'}
+    data_bindings:
+    - {property: text, code: 'self.item[''name'']'}
+  - type: Label
+    properties: {}
+    name: limit_val
+    layout_properties:
+      col_widths: {}
+      grid_position: LFQCZD,BMDARN XFEIUB,TUEZSR
+    data_bindings:
+    - {property: text, code: 'self.item[''limit_val'']'}
+  - type: Label
+    properties: {}
+    name: show_value
+    layout_properties:
+      col_widths: {}
+      grid_position: LFQCZD,BMDARN LIXOLI,GKODBE
+    data_bindings:
+    - {property: text, code: 'self.item[''val'']'}
+  - type: Label
+    properties: {}
+    name: show_max_value
+    layout_properties: {grid_position: 'LFQCZD,BMDARN KIOJMC,GEIPPM'}
+    data_bindings:
+    - {property: text, code: 'self.item[''max_val'']'}
+  - type: Plot
+    properties: {height: 231}
+    name: plot_1
+    layout_properties: {grid_position: 'LFQCZD,JZLDIB'}
+    event_bindings: {}
+    data_bindings:
+    - {property: data, code: 'self.item[''plot_data'']'}
+is_package: true
+item_type: {table_id: null}

@@ -1,0 +1,38 @@
+dependencies: []
+services:
+- source: /runtime/services/tables.yml
+  client_config: {}
+  server_config: {}
+- source: /runtime/services/anvil/secrets.yml
+  client_config: {}
+  server_config: {}
+cta: {preset: dashboard_tutorial}
+startup: {type: form, module: DashBoard_V2}
+package_name: MC855
+allow_embedding: false
+name: MC855
+runtime_options: {version: 2, server_version: python3-sandbox, client_version: '3',
+  server_spec: null}
+metadata: {}
+db_schema:
+  revenue:
+    title: Revenue
+    client: none
+    server: full
+    columns:
+    - name: amount
+      admin_ui: {width: 200}
+      type: number
+    - name: date
+      admin_ui: {width: 200}
+      type: date
+  limite:
+    title: Limite
+    client: none
+    server: full
+    columns:
+    - name: Limite
+      admin_ui: {width: 200}
+      type: number
+secrets: {}
+renamed: true

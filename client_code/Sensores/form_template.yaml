@@ -1,0 +1,47 @@
+container:
+  type: HtmlTemplate
+  properties: {html: '@theme:standard-page.html'}
+components:
+- type: FlowPanel
+  properties: {}
+  name: navbar_links
+  layout_properties: {slot: nav-right}
+  components: []
+- type: form:MenuLateral
+  properties: {}
+  name: menu_lateral_1
+  layout_properties: {slot: left-nav}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: Sensores, font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: label_1
+  layout_properties: {slot: title}
+- type: DataGrid
+  properties:
+    role: null
+    columns:
+    - {id: MQLUCJ, title: Id, data_key: id}
+    - {id: GYGQNK, title: Nome, data_key: name}
+    - {id: UKJVIP, title: Local, data_key: located_at}
+    - {id: DVQSON, title: '', data_key: '', expand: false}
+    auto_header: true
+    tooltip: ''
+    border: ''
+    foreground: ''
+    rows_per_page: 20
+    visible: true
+    wrap_on: never
+    show_page_controls: true
+    spacing_above: small
+    spacing_below: small
+    background: ''
+  name: data_grid_1
+  layout_properties: {slot: default}
+  components:
+  - type: RepeatingPanel
+    properties: {spacing_above: none, spacing_below: none, item_template: Sensores.Sensor}
+    name: repeating_panel_1
+    layout_properties: {}
+is_package: true
