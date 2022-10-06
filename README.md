@@ -10,6 +10,9 @@ pip install anvil-app-server
 Clonar Repositório <br>
 Rodar comando: anvil-app-server --app <Caminho_do_Repositorio>
 
+## Rodar com Docker
+docker compose up
+
 ## Acesso:
 
 Por padrão, fica hospedado no localhost:3030 
