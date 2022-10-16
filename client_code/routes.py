@@ -3,6 +3,13 @@ import anvil.http
 import datetime
 import math
 
+
+### Users ####
+
+def authUser(user, pwd):
+  resp = anvil.http.request("http://127.0.0.1:8000/", data={"username": user, "password": pwd})
+  print(resp)
+  
 def sensor_builder(sensor_id):
     name_list = ["Temperature", "Humidity", "Potency"]
     locates = ["Room", "Boiler", "Cooler"]
