@@ -7,8 +7,20 @@ import math
 ### Users ####
 
 def authUser(user, pwd):
-  resp = anvil.http.request("http://127.0.0.1:8000/", data={"username": user, "password": pwd})
-  print(resp)
+  try:
+    resp = anvil.http.request("http://127.0.0.1:8000/authUser", method="GET", data={"username": user, "password": pwd}, json = True)
+    return resp
+  
+  except:
+    return False
+
+def validate_token(token):
+  try:
+    resp = anvil.http.request("http://127.0.0.1:8000/verify_token", method="GET", data={"token": token}, json = True)    
+    return resp["valid"]
+  
+  except:
+    return False
   
 def sensor_builder(sensor_id):
     name_list = ["Temperature", "Humidity", "Potency"]
