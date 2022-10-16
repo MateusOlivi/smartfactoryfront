@@ -1,0 +1,68 @@
+container:
+  type: HtmlTemplate
+  properties: {html: '@theme:standard-page.html'}
+components:
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: content_panel
+  layout_properties: {slot: default}
+  components:
+  - type: Spacer
+    properties: {height: 128}
+    name: spacer_1
+    layout_properties: {grid_position: 'GBYABI,WBDDIV'}
+- type: FlowPanel
+  properties: {}
+  name: navbar_links
+  layout_properties: {slot: nav-right}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: Login, font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: label_1
+  layout_properties: {slot: title}
+- type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+    spacing_below: small, background: ''}
+  name: content_panel_copy
+  layout_properties: {slot: default}
+  components:
+  - type: XYPanel
+    properties: {role: card, width: 535.333, align: center, height: 223, tooltip: '',
+      border: '', foreground: '', visible: true, spacing_above: small, spacing_below: small,
+      background: ''}
+    name: xy_panel_2
+    layout_properties: {grid_position: 'SRFGHZ,IJVYGX'}
+    components:
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Senha, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_3
+      layout_properties: {grid_position: 'GSSIOT,ALCBFN', x: 80, y: 80, width: 74.6667}
+    - type: TextBox
+      properties: {}
+      name: pwd_box
+      layout_properties: {grid_position: 'GSSIOT,QMEFUD', x: 174, y: 80, width: 263.306}
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Usuario, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_2
+      layout_properties: {grid_position: 'OKVRMN,RASJBV', x: 80, y: 34, width: 97.6667}
+    - type: TextBox
+      properties: {}
+      name: user_box
+      layout_properties: {grid_position: 'OKVRMN,JPDBRK', x: 174, y: 34, width: 263.306}
+    - type: Button
+      properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+        foreground: '', visible: true, text: Entrar, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: button_1
+      layout_properties: {x: 193, y: 165.77777099609375, width: 100}
+is_package: true
