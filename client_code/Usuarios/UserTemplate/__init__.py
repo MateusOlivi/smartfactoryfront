@@ -29,7 +29,6 @@ class UserTemplate(UserTemplateTemplate):
     
     alert(content=group_form, title="EditarGrupos")
     
-    
     print(f"You entered: {t.text}")
     
 
