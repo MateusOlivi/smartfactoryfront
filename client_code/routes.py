@@ -30,11 +30,12 @@ def getUserList(token):
   except Exception as e:
     return False
 
-def getGroups(user_id = ""):
+def getGroups(token, user_id = ""):
   try:
     resp = anvil.http.request("http://127.0.0.1:8000/groups", method="GET", data={"user_id": user_id}, headers={"Authorization": token}, json = True)    
     return resp
   except Exception as e:
+    print(e.content)
     return False
   
 def sensor_builder(sensor_id):

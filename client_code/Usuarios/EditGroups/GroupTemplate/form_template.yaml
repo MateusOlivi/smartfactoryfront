@@ -7,4 +7,6 @@ components:
     checked: false, underline: false}
   name: check_box_1
   layout_properties: {column: PEHXXY}
+  data_bindings:
+  - {property: checked, code: 'self.item[''in_group'']', writeback: true}
 is_package: true
