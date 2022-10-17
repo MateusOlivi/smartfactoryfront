@@ -17,7 +17,7 @@ def authUser(user, pwd):
 def validate_token(token):
   try:
     resp = anvil.http.request("http://127.0.0.1:8000/verify_token", method="GET", data={"token": token}, json = True)    
-    return resp["valid"]
+    return resp
   
   except:
     return False

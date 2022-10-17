@@ -33,7 +33,7 @@ class Login(LoginTemplate):
   def verify_session(self, **event_args):
       valid_session = functions.validate_session()
       
-      if(valid_session):
+      if(valid_session != False):
         print("User already logged in")
         open_form('DashBoard_V2')
 
