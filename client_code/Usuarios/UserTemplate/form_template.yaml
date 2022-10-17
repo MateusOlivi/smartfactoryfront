@@ -9,4 +9,5 @@ components:
     underline: false, icon: ''}
   name: button_1
   layout_properties: {column: RHBMDM}
+  event_bindings: {click: clicar_grupos}
 is_package: true

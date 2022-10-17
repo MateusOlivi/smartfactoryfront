@@ -37,7 +37,7 @@ components:
     layout_properties: {grid_position: 'JOGANW,GYPFLH'}
     components:
     - type: RepeatingPanel
-      properties: {spacing_above: none, spacing_below: none, item_template: Usuarios.TemplateRow}
+      properties: {spacing_above: none, spacing_below: none, item_template: Usuarios.UserTemplate}
       name: painel
       layout_properties: {}
 - type: FlowPanel
