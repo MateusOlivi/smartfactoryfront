@@ -2,28 +2,11 @@ container:
   type: DataRowPanel
   event_bindings: {}
 components:
-- type: DropDown
-  properties:
-    role: null
-    align: full
-    tooltip: ''
-    placeholder: ''
-    border: ''
-    enabled: true
-    foreground: ''
-    items: ['']
-    visible: true
-    font_size: null
-    font: ''
-    spacing_above: small
-    spacing_below: small
-    italic: false
-    background: ''
-    bold: false
-    underline: false
-    include_placeholder: false
-  name: dropdown_access
-  layout_properties: {column: CZHRVL}
-  data_bindings:
-  - {property: selected_value, code: 'self.item[''access'']', writeback: true}
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Grupos, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: button_1
+  layout_properties: {column: RHBMDM}
 is_package: true

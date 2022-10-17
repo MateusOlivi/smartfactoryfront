@@ -18,10 +18,10 @@ components:
     properties:
       role: null
       columns:
-      - {id: XJBZOL, title: Id, data_key: id}
-      - {id: QNKGWL, title: Nome, data_key: nome}
-      - {id: SDFTNJ, title: Email, data_key: email}
-      - {id: CZHRVL, title: Acesso, data_key: ''}
+      - {id: QNKGWL, title: Nome, data_key: name, width: '', expand: false}
+      - {id: SDFTNJ, title: Usuario, data_key: username, width: '', expand: false}
+      - {id: CZHRVL, title: Email, data_key: email, width: '', expand: false}
+      - {id: RHBMDM, title: '', data_key: groups}
       auto_header: true
       tooltip: ''
       border: ''

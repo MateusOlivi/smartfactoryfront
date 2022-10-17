@@ -27,10 +27,8 @@ def getUserList(token):
   try:
     resp = anvil.http.request("http://127.0.0.1:8000/userList", method="GET",headers={"Authorization": token}, json = True)    
     return resp
-  
   except Exception as e:
-    resp = e.content.get_bytes()
-    return json.loads(resp)
+    return False
   
 def sensor_builder(sensor_id):
     name_list = ["Temperature", "Humidity", "Potency"]

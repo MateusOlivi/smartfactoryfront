@@ -9,4 +9,4 @@ class TemplateRow(TemplateRowTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    self.dropdown_access.items = ["User", "Admin"]
+    print(self.item)
