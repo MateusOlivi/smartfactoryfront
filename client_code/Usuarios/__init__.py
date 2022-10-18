@@ -45,5 +45,9 @@ class Usuarios(UsuariosTemplate):
     }
     
     created = routes.createUser(my_token, payload)
-    print(created)
-
+    
+    if(created == False):
+      alert(content="Houve um problema ao criar o usuario, verifique usuario/email já existe", title="Usuario não criado", large=True)
+    else:
+      alert(content="Usuario Criado!", title="Usuario criado", large=False)
+      self.painel.items = self.users_list()

@@ -82,9 +82,11 @@ def createUser(token, payload):
     }
     
     anvil.http.request("http://127.0.0.1:8000/createUser", method="POST", data = payload, headers=headers)    
+    return True
   
   except:
     return False
+  
 def sensor_builder(sensor_id):
     name_list = ["Temperature", "Humidity", "Potency"]
     locates = ["Room", "Boiler", "Cooler"]
