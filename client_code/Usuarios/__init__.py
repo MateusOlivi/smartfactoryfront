@@ -1,7 +1,9 @@
 from ._anvil_designer import UsuariosTemplate
 from anvil.js.window import localStorage, sessionStorage
+from anvil import *
 
 from .. import routes
+from .CreateUser import CreateUser
 
 class Usuarios(UsuariosTemplate):
   def __init__(self, **properties):
@@ -22,8 +24,10 @@ class Usuarios(UsuariosTemplate):
         "email": user.get("email", None)
       } for user in user_list["users"]]
       
-  def button_aplicar(self, **event_args):
-    pass
+  def button_create(self, **event_args):
+    create_user_form = CreateUser()
+    
+    alert(content=create_user_form, title="Criar Usuario")
     
 
 
