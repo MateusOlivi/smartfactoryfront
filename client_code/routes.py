@@ -35,7 +35,40 @@ def getGroups(token, user_id = ""):
     resp = anvil.http.request("http://127.0.0.1:8000/groups", method="GET", data={"user_id": user_id}, headers={"Authorization": token}, json = True)    
     return resp
   except Exception as e:
-    print(e.content)
+    return False
+
+def addGroup(token, user_id, group_id_list):
+  try:
+    payload = json.dumps({
+      "user_id": user_id,
+      "groups_ids": group_id_list
+    })
+    
+    headers= {
+      "content-type": "application/json",
+      "Authorization": token
+    }
+    
+    anvil.http.request("http://127.0.0.1:8000/userGroup", method="POST", data = payload, headers=headers)  
+    
+  except:
+    return False
+
+def removeGroup(token, user_id, group_id_list):
+  try:   
+    payload = json.dumps({
+      "user_id": user_id,
+      "groups_ids": group_id_list
+    })
+    
+    headers= {
+      "content-type": "application/json",
+      "Authorization": token
+    }
+    
+    anvil.http.request("http://127.0.0.1:8000/userGroup", method="DELETE", data = payload, headers=headers)    
+  
+  except:
     return False
   
 def sensor_builder(sensor_id):

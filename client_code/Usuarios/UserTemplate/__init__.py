@@ -35,7 +35,8 @@ class UserTemplate(UserTemplateTemplate):
     added = [item["group_id"] for item in items if item['in_group'] == True and item['group'] not in user_groups_names]
     removed = [item["group_id"] for item in items if item['in_group'] == False and item['group'] in user_groups_names]
     
-    print(added)
-    print(removed)
-    
-    
+    if(len(added) != 0):
+      routes.addGroup(my_token, current_user_id, added)
+    if(len(removed) != 0):
+      routes.removeGroup(my_token, current_user_id, removed)
+      
