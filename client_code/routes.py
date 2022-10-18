@@ -67,10 +67,24 @@ def removeGroup(token, user_id, group_id_list):
     }
     
     anvil.http.request("http://127.0.0.1:8000/userGroup", method="DELETE", data = payload, headers=headers)    
+    return True
   
   except:
     return False
+
+def createUser(token, payload):
+  try:   
+    payload = json.dumps(payload)
+    
+    headers= {
+      "content-type": "application/json",
+      "Authorization": token
+    }
+    
+    anvil.http.request("http://127.0.0.1:8000/createUser", method="POST", data = payload, headers=headers)    
   
+  except:
+    return False
 def sensor_builder(sensor_id):
     name_list = ["Temperature", "Humidity", "Potency"]
     locates = ["Room", "Boiler", "Cooler"]

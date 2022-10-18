@@ -25,11 +25,25 @@ class Usuarios(UsuariosTemplate):
       } for user in user_list["users"]]
       
   def button_create(self, **event_args):
+    my_token = localStorage.get("access_token")
     create_user_form = CreateUser()
     
-    alert(content=create_user_form, title="Criar Usuario")
+    alert(content=create_user_form, title="Criar Usuario", large=True)
     
-
-
-
+    username = create_user_form.username_box.text
+    firstname = create_user_form.firstname_box.text
+    lastname = create_user_form.lastname_box.text
+    email = create_user_form.email_box.text
+    password = create_user_form.password_box.text
+  
+    payload = {
+      "username": username,
+      "email": email,
+      "firstName": firstname ,
+      "lastName": lastname,
+      "password": password
+    }
+    
+    created = routes.createUser(my_token, payload)
+    print(created)
 

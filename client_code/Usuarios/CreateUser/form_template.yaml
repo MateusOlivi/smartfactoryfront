@@ -1,6 +1,6 @@
 container:
   type: ColumnPanel
-  properties: {col_widths: '{}'}
+  properties: {col_widths: '{"ZMVMFK":25,"TPYIWN":35,"JCKIFF":25,"CWGIJM":35,"HIWWVV":25,"VZMAJC":35,"DADXBP":25,"BYPNDK":35,"OBOAXV":25,"ZIBKHL":35}'}
 components:
 - type: Label
   properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
@@ -11,7 +11,7 @@ components:
   layout_properties: {grid_position: 'AYTIVV,ZMVMFK'}
 - type: TextBox
   properties: {}
-  name: text_box_1
+  name: username_box
   layout_properties: {grid_position: 'AYTIVV,TPYIWN'}
 - type: Label
   properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
@@ -22,7 +22,7 @@ components:
   layout_properties: {grid_position: 'WNKGES,JCKIFF'}
 - type: TextBox
   properties: {}
-  name: text_box_2
+  name: firstname_box
   layout_properties: {grid_position: 'WNKGES,CWGIJM'}
 - type: Label
   properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
@@ -33,7 +33,7 @@ components:
   layout_properties: {grid_position: 'SXWGQX,HIWWVV'}
 - type: TextBox
   properties: {}
-  name: text_box_3
+  name: lastname_box
   layout_properties: {grid_position: 'SXWGQX,VZMAJC'}
 - type: Label
   properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
@@ -44,7 +44,7 @@ components:
   layout_properties: {grid_position: 'CJBNRD,DADXBP'}
 - type: TextBox
   properties: {}
-  name: text_box_4
+  name: email_box
   layout_properties: {grid_position: 'CJBNRD,BYPNDK'}
 - type: Label
   properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
@@ -58,6 +58,6 @@ components:
     border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
     font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
     background: '', bold: false, underline: false}
-  name: text_box_5
+  name: password_box
   layout_properties: {grid_position: 'TNTKOF,ZIBKHL'}
 is_package: true
