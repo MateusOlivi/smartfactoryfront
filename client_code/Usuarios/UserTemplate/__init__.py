@@ -40,3 +40,16 @@ class UserTemplate(UserTemplateTemplate):
     if(len(removed) != 0):
       routes.removeGroup(my_token, current_user_id, removed)
       
+
+  def button_delete(self, **event_args):
+    my_token = localStorage.get("access_token")
+    current_user_id = self.item["id"]
+    
+    deleted = routes.deleteUser(my_token, current_user_id)
+
+    if(deleted == False):
+      alert(content="Houve um problema ao deletar o usuario", title="Usuario não deletado", large=True)
+    else:
+      alert(content="Usuario Deletado!", title="Usuario deletado", large=False)
+      self.painel.items = self.users_list()
+    

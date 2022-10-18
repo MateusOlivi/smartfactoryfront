@@ -81,7 +81,24 @@ def createUser(token, payload):
       "Authorization": token
     }
     
-    anvil.http.request("http://127.0.0.1:8000/createUser", method="POST", data = payload, headers=headers)    
+    anvil.http.request("http://127.0.0.1:8000/user", method="POST", data = payload, headers=headers)    
+    return True
+  
+  except:
+    return False
+
+def deleteUser(token, user_id):
+  try:   
+    data ={
+      "user_id": user_id,
+    }
+    
+    headers= {
+      "Authorization": token,
+      "content-type": "application/x-www-form-urlencoded"
+    }
+    
+    anvil.http.request("http://127.0.0.1:8000/user", method="DELETE", data = data, headers=headers)    
     return True
   
   except:

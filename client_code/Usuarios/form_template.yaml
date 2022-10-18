@@ -7,17 +7,26 @@ components:
   name: content_panel
   layout_properties: {slot: default}
   components:
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Criar Usuário, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: create_user_button
+    layout_properties: {grid_position: 'HLWIWB,SEVNZQ', slot: default}
+    event_bindings: {click: button_create}
   - type: Label
     properties: {role: headline, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: Usuários, font_size: null, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
       underline: false, icon: ''}
     name: label_2
-    layout_properties: {grid_position: 'LISDCZ,BXVGBX'}
+    layout_properties: {grid_position: 'VDMHHR,GKHTFC'}
   - type: DataGrid
     properties:
       role: null
       columns:
+      - {id: YCWJYT, title: '', data_key: column_1, width: '', expand: false}
       - {id: QNKGWL, title: Nome, data_key: name, width: '', expand: false}
       - {id: SDFTNJ, title: Usuario, data_key: username, width: '', expand: false}
       - {id: CZHRVL, title: Email, data_key: email, width: '', expand: false}
@@ -55,12 +64,4 @@ components:
     icon: ''}
   name: label_1
   layout_properties: {slot: title}
-- type: Button
-  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-    foreground: '', visible: true, text: Criar Usuário, font_size: null, font: '',
-    spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '',
-    bold: false, underline: false, icon: ''}
-  name: create_user_button
-  layout_properties: {grid_position: 'QAAMOI,UHPOHL', slot: default}
-  event_bindings: {click: button_create}
 is_package: true
