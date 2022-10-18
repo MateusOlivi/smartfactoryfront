@@ -7,6 +7,7 @@ from anvil.tables import app_tables
 from ..EditGroups import EditGroups
 from anvil.js.window import localStorage, sessionStorage
 from ... import routes
+from .. import Usuarios
 
 class UserTemplate(UserTemplateTemplate):
   def __init__(self, **properties):
@@ -51,5 +52,5 @@ class UserTemplate(UserTemplateTemplate):
       alert(content="Houve um problema ao deletar o usuario", title="Usuario não deletado", large=True)
     else:
       alert(content="Usuario Deletado!", title="Usuario deletado", large=False)
-      self.painel.items = self.users_list()
+      open_form('Usuarios')
     

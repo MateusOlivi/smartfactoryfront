@@ -89,16 +89,13 @@ def createUser(token, payload):
 
 def deleteUser(token, user_id):
   try:   
-    data ={
-      "user_id": user_id,
-    }
-    
+   
     headers= {
-      "Authorization": token,
-      "content-type": "application/x-www-form-urlencoded"
+      "Authorization": token
     }
     
-    anvil.http.request("http://127.0.0.1:8000/user", method="DELETE", data = data, headers=headers)    
+    anvil.http.request(f"http://127.0.0.1:8000/user?user_id={user_id}", method="DELETE", headers=headers)
+    
     return True
   
   except:
