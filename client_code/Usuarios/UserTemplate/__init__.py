@@ -29,6 +29,12 @@ class UserTemplate(UserTemplateTemplate):
     
     alert(content=group_form, title="EditarGrupos")
     
-    print(group_form.repeating_panel_1.items)
+    items = (group_form.repeating_panel_1.items)
     
-
+    added = [item["group"] for item in items if item['in_group'] == True and item['group'] not in user_groups_names]
+    removed = [item["group"] for item in items if item['in_group'] == False and item['group'] in user_groups_names]
+    
+    print(added)
+    print(removed)
+    
+    
