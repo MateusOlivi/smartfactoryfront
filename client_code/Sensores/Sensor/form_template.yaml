@@ -1,4 +1,6 @@
-container: {type: DataRowPanel}
+container:
+  type: DataRowPanel
+  event_bindings: {}
 components:
 - type: Button
   properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
@@ -7,5 +9,5 @@ components:
     underline: false, icon: ''}
   name: button_1
   layout_properties: {column: DVQSON}
-  event_bindings: {click: button_1_click}
+  event_bindings: {click: button_1_click, show: validate_session}
 is_package: true

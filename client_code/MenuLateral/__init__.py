@@ -4,6 +4,7 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
+from .. import functions
 
 class MenuLateral(MenuLateralTemplate):
   def __init__(self, **properties):
@@ -20,5 +21,16 @@ class MenuLateral(MenuLateralTemplate):
     
   def button_3_click(self, **event_args):
     open_form('Sensores')
+
+  def validate_session(self, **event_args):
+    validate = functions.validate_session_and_group("Admin")
+    
+    if(validate["logged"] == False):
+      open_form('Login')
+    else:
+      self.button_2.visible = validate['in_group']
+    
+
+
 
 

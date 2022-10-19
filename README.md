@@ -16,3 +16,4 @@ docker compose up
 ## Acesso:
 
 Por padrão, fica hospedado no localhost:3030 
+
