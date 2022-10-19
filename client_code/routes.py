@@ -4,7 +4,6 @@ import datetime
 import math
 import json
 
-
 ### Users ####
 
 def authUser(user, pwd):
@@ -16,23 +15,36 @@ def authUser(user, pwd):
     return False
 
 def validate_token(token):
-  try:
-    resp = anvil.http.request("http://127.0.0.1:8000/verify_token", method="GET", data={"token": token}, json = True)    
+  try:    
+    headers= {
+      "Authorization": token
+    }
+    
+    resp = anvil.http.request("http://127.0.0.1:8000/validate", method="GET", data = {}, headers= headers, json=True)    
+    
     return resp
   
-  except:
+  except Exception as e:
     return False
 
 def getUserList(token):
   try:
-    resp = anvil.http.request("http://127.0.0.1:8000/userList", method="GET",headers={"Authorization": token}, json = True)    
+    resp = anvil.http.request("http://127.0.0.1:8000/user/list", method="GET", data = {}, headers={"Authorization": token}, json = True)    
+    return resp
+  
+  except Exception as e:
+    return False
+
+def getUserGroups(token, user_id):
+  try:
+    resp = anvil.http.request("http://127.0.0.1:8000/userGroups", method="GET", data={"user_id": user_id}, headers={"Authorization": token}, json = True)    
     return resp
   except Exception as e:
     return False
 
-def getGroups(token, user_id = ""):
+def getAllGroups(token):
   try:
-    resp = anvil.http.request("http://127.0.0.1:8000/groups", method="GET", data={"user_id": user_id}, headers={"Authorization": token}, json = True)    
+    resp = anvil.http.request("http://127.0.0.1:8000/groups/list", method="GET", data={}, headers={"Authorization": token}, json = True)    
     return resp
   except Exception as e:
     return False
@@ -49,7 +61,7 @@ def addGroup(token, user_id, group_id_list):
       "Authorization": token
     }
     
-    anvil.http.request("http://127.0.0.1:8000/userGroup", method="POST", data = payload, headers=headers)  
+    anvil.http.request("http://127.0.0.1:8000/userGroups", method="POST", data = payload, headers=headers)  
     
   except:
     return False
@@ -66,7 +78,7 @@ def removeGroup(token, user_id, group_id_list):
       "Authorization": token
     }
     
-    anvil.http.request("http://127.0.0.1:8000/userGroup", method="DELETE", data = payload, headers=headers)    
+    anvil.http.request("http://127.0.0.1:8000/userGroups", method="DELETE", data = payload, headers=headers)    
     return True
   
   except:

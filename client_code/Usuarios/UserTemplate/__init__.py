@@ -18,8 +18,8 @@ class UserTemplate(UserTemplateTemplate):
     my_token = localStorage.get("access_token")
     current_user_id = self.item["id"]
     
-    groups = routes.getGroups(my_token)
-    user_groups = routes.getGroups(my_token, user_id = current_user_id)
+    groups = routes.getAllGroups(my_token)
+    user_groups = routes.getUserGroups(my_token, user_id = current_user_id)
     user_groups_names = [group["name"] for group in user_groups["groups"]]
         
     group_form = EditGroups()
