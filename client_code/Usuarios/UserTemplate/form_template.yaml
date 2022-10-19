@@ -1,0 +1,21 @@
+container:
+  type: DataRowPanel
+  event_bindings: {}
+components:
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Grupos, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: button_1
+  layout_properties: {column: RHBMDM}
+  event_bindings: {click: clicar_grupos}
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: 'fa:trash-o'}
+  name: button_1_copy
+  layout_properties: {grid_position: 'PHRTHF,AGMVHQ', column: YCWJYT}
+  event_bindings: {click: button_delete}
+is_package: true

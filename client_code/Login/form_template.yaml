@@ -1,0 +1,85 @@
+container:
+  type: HtmlTemplate
+  properties: {html: '@theme:standard-page.html'}
+  event_bindings: {}
+components:
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: content_panel
+  layout_properties: {slot: default}
+  components:
+  - type: Spacer
+    properties: {height: 44}
+    name: spacer_1
+    layout_properties: {grid_position: 'GBYABI,WBDDIV'}
+    event_bindings: {}
+- type: FlowPanel
+  properties: {}
+  name: navbar_links
+  layout_properties: {slot: nav-right}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: Login, font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: label_1
+  layout_properties: {slot: title}
+  event_bindings: {show: verify_session}
+- type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+    spacing_below: small, background: ''}
+  name: content_panel_copy
+  layout_properties: {slot: default}
+  components:
+  - type: XYPanel
+    properties: {role: card, width: 535.333, align: center, height: 226, tooltip: '',
+      border: '', foreground: '', visible: true, spacing_above: small, spacing_below: small,
+      background: ''}
+    name: xy_panel_2
+    layout_properties: {grid_position: 'SRFGHZ,IJVYGX'}
+    components:
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Usuario, font_size: 18, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+        underline: false, icon: ''}
+      name: label_2
+      layout_properties: {grid_position: 'OKVRMN,RASJBV', x: 80, y: 31, width: 98}
+    - type: TextBox
+      properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+        border: '', enabled: true, foreground: '', visible: true, text: '', font_size: 18,
+        font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+        background: '', bold: false, underline: false}
+      name: user_box
+      layout_properties: {grid_position: 'OKVRMN,JPDBRK', x: 174, y: 33, width: 263}
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Senha, font_size: 18, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+        underline: false, icon: ''}
+      name: label_3
+      layout_properties: {grid_position: 'GSSIOT,ALCBFN', x: 80, y: 91, width: 75}
+    - type: TextBox
+      properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+        border: '', enabled: true, foreground: '', visible: true, text: '', font_size: 18,
+        font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+        background: '', bold: false, underline: false}
+      name: pwd_box
+      layout_properties: {grid_position: 'GSSIOT,QMEFUD', x: 174, y: 93, width: 263}
+    - type: Label
+      properties: {role: null, align: center, tooltip: '', border: '', foreground: '#ff0000',
+        visible: true, text: '', font_size: null, font: '18', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+        underline: false, icon: ''}
+      name: message_label
+      layout_properties: {x: -9, y: 193.32293701171875, width: 516, grid_position: 'QZTHKI,YOXSOG'}
+    - type: Button
+      properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+        foreground: '', visible: true, text: Entrar, font_size: 18, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: button_1
+      layout_properties: {x: 188, y: 151, width: 132}
+      event_bindings: {click: enter_button}
+is_package: true
