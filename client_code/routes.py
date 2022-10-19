@@ -8,19 +8,23 @@ import json
 
 def authUser(user, pwd):
   try:
-    resp = anvil.http.request("http://127.0.0.1:8000/authUser", method="GET", data={"username": user, "password": pwd}, json = True)
+    url = f"http://127.0.0.1:8000/authUser?username={user}&password={pwd}"
+    
+    resp = anvil.http.request(url, method="GET", json = True, data='')
     return resp
   
   except:
     return False
 
 def validate_token(token):
-  try:    
+  try:
+    url = "http://127.0.0.1:8000/validate"
+    
     headers= {
       "Authorization": token
     }
     
-    resp = anvil.http.request("http://127.0.0.1:8000/validate", method="GET", data = {}, headers= headers, json=True)    
+    resp = anvil.http.request(url, method="GET", headers= headers, json=True, data='')    
     
     return resp
   
@@ -29,7 +33,8 @@ def validate_token(token):
 
 def getUserList(token):
   try:
-    resp = anvil.http.request("http://127.0.0.1:8000/user/list", method="GET", data = {}, headers={"Authorization": token}, json = True)    
+    url = "http://127.0.0.1:8000/user/list/"
+    resp = anvil.http.request(url, method="GET", headers={"Authorization": token}, json = True, data='')    
     return resp
   
   except Exception as e:
@@ -37,15 +42,17 @@ def getUserList(token):
 
 def getUserGroups(token, user_id):
   try:
-    resp = anvil.http.request("http://127.0.0.1:8000/userGroups", method="GET", data={"user_id": user_id}, headers={"Authorization": token}, json = True)    
+    url = f"http://127.0.0.1:8000/userGroups?user_id={user_id}"
+    resp = anvil.http.request(url, method="GET", headers={"Authorization": token}, json = True, data='')    
     return resp
   except Exception as e:
     return False
 
 def getAllGroups(token):
   try:
-    resp = anvil.http.request("http://127.0.0.1:8000/groups/list", method="GET", data={}, headers={"Authorization": token}, json = True)    
+    resp = anvil.http.request("http://127.0.0.1:8000/groups/list", method="GET", headers={"Authorization": token}, json = True, data='')    
     return resp
+  
   except Exception as e:
     return False
 
@@ -106,7 +113,7 @@ def deleteUser(token, user_id):
       "Authorization": token
     }
     
-    anvil.http.request(f"http://127.0.0.1:8000/user?user_id={user_id}", method="DELETE", headers=headers)
+    anvil.http.request(f"http://127.0.0.1:8000/user?user_id={user_id}", method="DELETE", headers=headers, data='')
     
     return True
   
