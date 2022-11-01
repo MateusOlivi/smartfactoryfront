@@ -28,7 +28,10 @@ class Usuarios(UsuariosTemplate):
     my_token = localStorage.get("access_token")
     create_user_form = CreateUser()
     
-    alert(content=create_user_form, title="Criar Usuario", large=True)
+    result = alert(content=create_user_form, title="Criar Usuario", large=True)
+    
+    if(result == None):
+      return 
     
     username = create_user_form.username_box.text
     firstname = create_user_form.firstname_box.text
