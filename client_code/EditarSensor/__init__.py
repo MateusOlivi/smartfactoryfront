@@ -14,4 +14,3 @@ class EditarSensor(EditarSensorTemplate):
     self.text_limit.text = properties["item"]["limit_value"]
     self.text_located_at.text = properties["item"]['located_at']
     # Any code you write here will run when the form opens.
-    

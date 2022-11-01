@@ -23,6 +23,7 @@ components:
       background: '', bold: false, underline: false}
     name: text_id
     layout_properties: {grid_position: 'RBIVKA,NCCYGH'}
+    event_bindings: {}
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: Nome, font_size: null, font: '', spacing_above: small,
