@@ -22,7 +22,7 @@ components:
   properties:
     role: null
     columns:
-    - {id: MQLUCJ, title: Id, data_key: id}
+    - {id: SGBHQI, title: id, data_key: sensor_id}
     - {id: GYGQNK, title: Nome, data_key: name}
     - {id: UKJVIP, title: Local, data_key: located_at}
     - {id: DVQSON, title: '', data_key: '', expand: false}

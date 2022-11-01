@@ -119,6 +119,31 @@ def deleteUser(token, user_id):
   
   except:
     return False
+
+  
+# Sensores
+
+def getSensors(token):
+  try:   
+      headers= {
+        "Authorization": token
+      }
+      
+      resp = anvil.http.request(f"http://127.0.0.1:8000/sensors/list", method="GET", headers=headers, json=True, data='')
+      
+      return resp
+    
+  except:
+    return False
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
 def sensor_builder(sensor_id):
     name_list = ["Temperature", "Humidity", "Potency"]

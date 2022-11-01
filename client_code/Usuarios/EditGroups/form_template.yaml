@@ -8,7 +8,7 @@ components:
     columns:
     - {id: ARDUQF, title: Grupo, data_key: group}
     - {id: PEHXXY, title: Participando, data_key: in_group, width: '', expand: false}
-    auto_header: true
+    auto_header: false
     tooltip: ''
     border: ''
     foreground: ''

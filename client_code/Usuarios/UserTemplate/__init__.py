@@ -29,7 +29,7 @@ class UserTemplate(UserTemplateTemplate):
       "group_id": group["id"],
     } for group in groups["groups"]]
     
-    alert(content=group_form, title="EditarGrupos")
+    alert(content=group_form, title="Grupos do Usuario")
     
     items = (group_form.repeating_panel_1.items)
     
