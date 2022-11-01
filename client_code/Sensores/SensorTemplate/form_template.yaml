@@ -77,7 +77,7 @@ components:
       underline: false, icon: ''}
     name: edit_button
     layout_properties: {grid_position: 'GIONTF,FSMRXB FTVWEX,VHLPKM'}
-    event_bindings: {}
+    event_bindings: {click: edit_button_click}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: DashBoards, font_size: null, font: '',
