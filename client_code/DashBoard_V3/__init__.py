@@ -64,9 +64,9 @@ class DashBoard_V3(DashBoard_V3Template):
     
     return data
 
-  def timer_1_tick(self, **event_args):
-    with anvil.server.no_loading_indicator:
-      print("oi")
-      self.setItems()
+#   def timer_1_tick(self, **event_args):
+#     with anvil.server.no_loading_indicator:
+#       print("oi")
+#       self.setItems()
 
   

@@ -25,10 +25,6 @@ components:
   properties: {}
   name: menu_lateral_1
   layout_properties: {slot: left-nav}
-- type: Timer
-  properties: {interval: 5}
-  name: timer_1
-  event_bindings: {tick: timer_1_tick}
 container:
   type: HtmlTemplate
   properties: {html: '@theme:standard-page.html'}
