@@ -136,7 +136,20 @@ def getSensors(token):
   except:
     return False
   
-  
+def patchSensors(token,sensor_id, patch_json):
+  try:
+      url = f"http://127.0.0.1:8000/sensors?sensor_id={sensor_id}"
+      
+      headers= {
+        "Authorization": token
+      }
+      
+      resp = anvil.http.request(url, method="PATCH", headers=headers, json=True, data = patch_json)
+      
+      return resp
+    
+  except:
+    return False
   
   
   
