@@ -106,6 +106,14 @@ components:
         background: ''}
       name: repeating_panel_1
       layout_properties: {grid_position: 'HDAYSV,WXKZMX'}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Aplicar, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: apply_button
+    layout_properties: {grid_position: 'KQRNAR,QVBKEX'}
+    event_bindings: {click: apply_button_click}
 container:
   type: HtmlTemplate
   properties: {html: '@theme:standard-page.html'}
