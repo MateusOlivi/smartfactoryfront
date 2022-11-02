@@ -88,5 +88,7 @@ components:
     name: plot_1
     layout_properties: {grid_position: 'LFQCZD,THYEXR'}
     event_bindings: {}
+    data_bindings:
+    - {property: data, code: 'self.item[''plot_data'']'}
 is_package: true
 item_type: {table_id: null}

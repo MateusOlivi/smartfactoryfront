@@ -41,7 +41,6 @@ class EditarSensor(EditarSensorTemplate):
         "bottom_limit": item["bottom_limit"]
       })
       
-      self.repeating_panel_1.raise_event_on_children()
       if(item["bottom_limit"] != None and item["upper_limit"] != None and item["bottom_limit"] >= item["upper_limit"]):
         error_list.append(item["type"])
     
@@ -54,7 +53,7 @@ class EditarSensor(EditarSensorTemplate):
         alert(content="Houve um erro ao atualizar os dados do sensor", title="Erro", large=True)
     
     else:
-      alert(content="Os limites inferiores foram definidos como maiores que os superiores para: " + ", ".join(error_list), title="Erro", large=True)
+      alert(content="Os limites inferiores estão maiores que os superiores para: " + ", ".join(error_list), title="Erro", large=True)
 
       
   

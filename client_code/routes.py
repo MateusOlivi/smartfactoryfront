@@ -122,7 +122,6 @@ def deleteUser(token, user_id):
 
   
 # Sensores
-
 def getSensors(token):
   try:   
       headers= {
@@ -144,9 +143,9 @@ def patchSensors(token,sensor_id, patch_json):
         "Authorization": token
       }
       
-      resp = anvil.http.request(url, method="PATCH", headers=headers, json=True, data = patch_json)
+      anvil.http.request(url, method="PATCH", headers=headers, json=True, data = patch_json)
       
-      return resp
+      return True
     
   except:
     return False
