@@ -42,4 +42,9 @@ class EditarSensor(EditarSensorTemplate):
     
     print(patch_json)
 
+  def drop_down_1_change(self, **event_args):
+    """This method is called when an item is selected"""
+    pass
+
+
 
