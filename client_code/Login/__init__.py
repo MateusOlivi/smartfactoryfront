@@ -28,7 +28,7 @@ class Login(LoginTemplate):
       self.message_label.text = "Usuário/Senha incorreto"
     else:
       localStorage.setItem('access_token', token["access_token"])
-      open_form('DashBoard_V2')
+      open_form('Sensores')
             
   def verify_session(self, **event_args):
       valid_session = functions.validate_session()

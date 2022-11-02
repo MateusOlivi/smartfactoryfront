@@ -17,12 +17,16 @@ class SensorTemplate(SensorTemplateTemplate):
     upper_limit = info_dict[0]["upper_limit"]
     bottom_limit = info_dict[0]["bottom_limit"]
     
+    self.unity = info_dict[0]["unity"]
+    
     self.name.text = self.item['sensor']["name"]
     self.type.text = my_type
     self.upper_limit.text = upper_limit if upper_limit != None else "Não definido"
     self.bottom_limit.text = bottom_limit if bottom_limit != None else "Não definido"
     
+    self.last_value.text = max(self.item['telemetry'], key = lambda x: x["inserted_at"])["value"]
     self.plot_data(self.item['telemetry'])
+    
             
   def plot_data(self, data):                        
     self.plot_1.data= go.Scatter(
@@ -32,10 +36,11 @@ class SensorTemplate(SensorTemplateTemplate):
             )
     
     self.style_plot(self.plot_1)
-    
+
   def style_plot(self, plot):
     # expand the graphs
     plot.layout = go.Layout(
+        title= "<b>Valor x Tempo</b>",
         margin=dict(
             l=50, #left margin
             r=50, #right margin
@@ -48,7 +53,8 @@ class SensorTemplate(SensorTemplateTemplate):
           tickfont=dict(
               family='Arial',
               size=11,
-              color='#808080'
+              color='#808080',
+              title= "tempo"
           ),
         ),
         yaxis=dict(
@@ -56,7 +62,8 @@ class SensorTemplate(SensorTemplateTemplate):
             tickfont=dict(
                 family='Arial',
                 size=11,
-                color='#808080'
+                color='#808080',
+                title= self.unity
             ),
           rangemode = "tozero"
           

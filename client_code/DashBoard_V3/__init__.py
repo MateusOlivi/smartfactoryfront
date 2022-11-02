@@ -50,8 +50,8 @@ class DashBoard_V3(DashBoard_V3Template):
       my_telemetry = [tele for tele in telemetry_data if tele["sensor_id"] == my_id]
       
       for telemetry in my_telemetry:
-        if(datetime.timestamp(datetime.now()) - telemetry["inserted_at"]/1000 > 86400):
-          continue
+#         if(datetime.timestamp(datetime.now()) - telemetry["inserted_at"]/1000 > 86400):
+#           continue
           
         my_type = telemetry["type"]
         
