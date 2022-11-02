@@ -3,7 +3,6 @@ import anvil.http
 import datetime
 import math
 import json
-
 ### Users ####
 
 def authUser(user, pwd):
@@ -134,6 +133,21 @@ def getSensors(token):
     
   except:
     return False
+
+def getSensor(token, sensor_id):
+  try:
+      url = f"http://127.0.0.1:8000/sensors?sensor_id={sensor_id}"
+      
+      headers= {
+        "Authorization": token
+      }
+      
+      resp = anvil.http.request(url, method="GET", headers=headers, json=True, data='')
+      
+      return resp
+    
+  except:
+    return False
   
 def patchSensors(token,sensor_id, patch_json):
   try:
@@ -149,8 +163,21 @@ def patchSensors(token,sensor_id, patch_json):
     
   except:
     return False
-  
-  
+
+def getTelemetryList(token):
+  try:
+      url = f"http://127.0.0.1:8000/telemetry/list"
+      
+      headers= {
+        "Authorization": token
+      }
+      
+      resp = anvil.http.request(url, method="GET", headers=headers, json=True, data='')
+      
+      return resp
+    
+  except:
+    return False
   
   
   

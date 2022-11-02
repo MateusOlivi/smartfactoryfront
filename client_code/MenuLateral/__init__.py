@@ -14,7 +14,7 @@ class MenuLateral(MenuLateralTemplate):
     # Any code you write here will run when the form opens.
 
   def button_1_click(self, **event_args):
-    open_form('DashBoard_V2')
+    open_form('DashBoard_V3')
 
   def button_2_click(self, **event_args):
     open_form('Usuarios')

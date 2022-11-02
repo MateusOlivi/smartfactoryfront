@@ -4,6 +4,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 import plotly.graph_objects as go
+import anvil.server
 from .. import routes
 
 class DashBoard_V2(DashBoard_V2Template):
@@ -11,6 +12,9 @@ class DashBoard_V2(DashBoard_V2Template):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     
+    self.set_things()
+    
+  def set_things(self):
     sensors = routes.get_sensors(5)
     
     my_history = []
@@ -41,5 +45,8 @@ class DashBoard_V2(DashBoard_V2Template):
       return go.Scatter(x = [x['timestamp'] for x in data],
                                     y = [x['value'] for x in data],
                                       lines=dict(color='#2196f3'))
-    
+  
+  def timer_1_tick(self, **event_args):
+    with anvil.server.no_loading_indicator:
+      self.set_things()
   
