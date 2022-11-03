@@ -58,6 +58,6 @@ class GroupTemplate(GroupTemplateTemplate):
     added = True
     for sensor_id in added_list:
       added = added and routes.addGroupSensor(my_token, sensor_id,self.item["group_name"])
-    
+      print("oi")
     print(added)
 
