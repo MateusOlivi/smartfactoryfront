@@ -16,6 +16,7 @@ class GroupTemplate(GroupTemplateTemplate):
     
     if(self.item["group_name"] == "Admin"):
       self.delete_button.enabled = False
+      self.sensors_button.enabled = False
     # Any code you write here will run when the form opens.
 
   def delete_button_click(self, **event_args):
@@ -25,6 +26,12 @@ class GroupTemplate(GroupTemplateTemplate):
     if(deleted == False):
       alert(content="Houve um problema ao deletar o grupo", title="Grupo não deletado", large=True)
     else:
+      sensors = routes.getSensors(my_token)
+      
+      for sensor in sensors:
+        if(self.item["group_name"] in sensor["groups"]):
+          routes.removeGroupSensor(my_token, sensor["sensor_id"],self.item["group_name"])
+          
       alert(content="Grupo Deletado!", title="Grupo deletado", large=False)
       open_form('Grupos')
 
@@ -32,9 +39,7 @@ class GroupTemplate(GroupTemplateTemplate):
     my_token = localStorage.get("access_token")
     
     sensors = routes.getSensors(my_token)
-    
-    #user_groups_names = [group["name"] for group in user_groups["groups"]]
-        
+            
     sensors_form = SensorsList()
     
     sensors_form.repeating_panel_1.items = [{
@@ -55,9 +60,10 @@ class GroupTemplate(GroupTemplateTemplate):
     added_list = [item["sensor_id"] for item in items if item['in_group'] == True and item['sensor_name'] not in participating]
     removed_list = [item["sensor_id"] for item in items if item['in_group'] == False and item['sensor_name'] in participating]
     
-    added = True
+    success = True
     for sensor_id in added_list:
-      added = added and routes.addGroupSensor(my_token, sensor_id,self.item["group_name"])
-      print("oi")
-    print(added)
-
+      success = success and routes.addGroupSensor(my_token, sensor_id,self.item["group_name"])
+    
+    for sensor_id in removed_list:
+      success = success and routes.removeGroupSensor(my_token, sensor_id,self.item["group_name"])
+    

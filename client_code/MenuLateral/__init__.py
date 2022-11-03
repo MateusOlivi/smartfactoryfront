@@ -6,6 +6,8 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 from .. import functions
 
+from anvil.js.window import localStorage, sessionStorage
+
 class MenuLateral(MenuLateralTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
@@ -34,6 +36,10 @@ class MenuLateral(MenuLateralTemplate):
       self.button_2.visible = validate['in_group']
       self.button_4.visible = validate['in_group']
     
+
+  def button_5_click(self, **event_args):
+    localStorage.setItem('access_token', None)
+    open_form('Login')
 
 
 

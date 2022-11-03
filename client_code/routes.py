@@ -202,6 +202,21 @@ def addGroupSensor(token,sensor_id, group_name):
   except:
     return False
 
+def removeGroupSensor(token,sensor_id, group_name):
+  try:
+      url = f"http://127.0.0.1:8000/sensors/groups?sensor_id={sensor_id}&group_name={group_name}"
+      
+      headers= {
+        "Authorization": token
+      }
+      
+      anvil.http.request(url, method="DELETE", headers=headers, json=True, data = '')
+      
+      return True
+    
+  except:
+    return False
+
 def getTelemetryList(token):
   try:
       url = f"http://127.0.0.1:8000/telemetry/list"
