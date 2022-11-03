@@ -16,3 +16,7 @@ class SensorTemplate(SensorTemplateTemplate):
     open_form('Sensores.EditarSensor', {"item": self.item})
     
 
+  def dashboard_button_click(self, **event_args):
+    open_form('DashBoard', sensor_id = self.item["sensor_id"])
+
+

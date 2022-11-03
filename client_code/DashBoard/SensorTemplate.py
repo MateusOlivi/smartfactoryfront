@@ -16,9 +16,7 @@ class SensorTemplate(SensorTemplateTemplate):
     
     upper_limit = info_dict[0]["upper_limit"]
     bottom_limit = info_dict[0]["bottom_limit"]
-    
-    self.unity = info_dict[0]["unity"]
-    
+        
     self.name.text = self.item['sensor']["name"]
     self.type.text = my_type
     self.upper_limit.text = upper_limit if upper_limit != None else "Não definido"
@@ -53,8 +51,7 @@ class SensorTemplate(SensorTemplateTemplate):
           tickfont=dict(
               family='Arial',
               size=11,
-              color='#808080',
-              title= "tempo"
+              color='#808080'
           ),
         ),
         yaxis=dict(
@@ -62,8 +59,7 @@ class SensorTemplate(SensorTemplateTemplate):
             tickfont=dict(
                 family='Arial',
                 size=11,
-                color='#808080',
-                title= self.unity
+                color='#808080'
             ),
           rangemode = "tozero"
           

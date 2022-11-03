@@ -14,14 +14,17 @@ class MenuLateral(MenuLateralTemplate):
     # Any code you write here will run when the form opens.
 
   def button_1_click(self, **event_args):
-    open_form('DashBoard_V3')
+    open_form('DashBoard')
 
   def button_2_click(self, **event_args):
     open_form('Usuarios')
     
   def button_3_click(self, **event_args):
     open_form('Sensores')
-
+  
+  def button_4_click(self, **event_args):
+    open_form('Grupos')
+    
   def validate_session(self, **event_args):
     validate = functions.validate_session_and_group("Admin")
     
@@ -29,7 +32,10 @@ class MenuLateral(MenuLateralTemplate):
       open_form('Login')
     else:
       self.button_2.visible = validate['in_group']
+      self.button_4.visible = validate['in_group']
     
+
+
 
 
 
