@@ -1,0 +1,88 @@
+components:
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: content_panel
+  layout_properties: {slot: default}
+  components:
+  - type: ColumnPanel
+    properties: {col_widths: '{"LYQRGQ":20,"KPASOP":20,"GCBGYD":20}'}
+    name: column_panel_1
+    layout_properties: {grid_position: 'QZRFNT,JAWBGI'}
+    components:
+    - type: Label
+      properties: {}
+      name: label_4
+      layout_properties: {grid_position: 'WZDRTF,LYQRGQ'}
+    - type: TextBox
+      properties: {role: null, align: center, hide_text: false, tooltip: '', placeholder: Nome do novo grupo,
+        border: '', enabled: true, foreground: '', visible: true, text: '', font_size: 14,
+        font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+        background: '', bold: false, underline: false}
+      name: group_name
+      layout_properties: {grid_position: 'WZDRTF,KPASOP'}
+      event_bindings: {}
+    - type: Label
+      properties: {}
+      name: label_5
+      layout_properties: {grid_position: 'WZDRTF,GCBGYD'}
+    - type: Button
+      properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+        foreground: '', visible: true, text: Adicionar Grupo, font_size: null, font: '',
+        spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+        background: '', bold: false, underline: false, icon: ''}
+      name: create_user_button
+      layout_properties: {grid_position: 'PUARMD,ZSUHXN', slot: default}
+      event_bindings: {click: button_create}
+  - type: Label
+    properties: {role: null, align: center, tooltip: '', border: '', foreground: '',
+      visible: true, text: GRUPOS, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+      underline: false, icon: ''}
+    name: label_2
+    layout_properties: {grid_position: 'NAOWML,DTTDXB'}
+  - type: DataGrid
+    properties:
+      role: null
+      columns:
+      - {id: VNBLUM, title: Nome do Grupo, data_key: group_name}
+      - {id: LRMNKL, title: '', data_key: column_2}
+      - {id: WYHREP, title: '', data_key: column_3}
+      auto_header: false
+      tooltip: ''
+      border: ''
+      foreground: ''
+      rows_per_page: 20
+      visible: true
+      wrap_on: never
+      show_page_controls: true
+      spacing_above: small
+      spacing_below: small
+      background: ''
+    name: data_grid_1
+    layout_properties: {grid_position: 'SSJEPU,VYBSCP'}
+    components:
+    - type: RepeatingPanel
+      properties: {role: card, tooltip: '', border: '', foreground: '', items: null,
+        visible: true, spacing_above: none, spacing_below: none, item_template: Grupos.GroupTemplate,
+        background: ''}
+      name: painel
+      layout_properties: {}
+- type: FlowPanel
+  properties: {}
+  name: navbar_links
+  layout_properties: {slot: nav-right}
+- type: form:MenuLateral
+  properties: {}
+  name: menu_lateral_1
+  layout_properties: {slot: left-nav}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: Grupos, font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: label_1
+  layout_properties: {slot: title}
+container:
+  type: HtmlTemplate
+  properties: {html: '@theme:standard-page.html'}
+is_package: true

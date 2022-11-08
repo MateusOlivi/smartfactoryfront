@@ -8,14 +8,14 @@ components:
     columns:
     - {id: ARDUQF, title: Grupo, data_key: group}
     - {id: PEHXXY, title: Participando, data_key: in_group, width: '', expand: false}
-    auto_header: true
+    auto_header: false
     tooltip: ''
     border: ''
     foreground: ''
     rows_per_page: 20
     visible: true
     wrap_on: never
-    show_page_controls: true
+    show_page_controls: false
     spacing_above: small
     spacing_below: small
     background: ''

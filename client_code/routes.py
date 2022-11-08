@@ -55,6 +55,28 @@ def getAllGroups(token):
   
   except Exception as e:
     return False
+  
+def createGroup(token, group_name):
+  try:
+    url = f"http://127.0.0.1:8000/groups?group_name={group_name}"
+    
+    resp = anvil.http.request(url, method="POST", headers={"Authorization": token}, json = True, data='')    
+    
+    return True
+  
+  except Exception as e:
+    return False
+
+def deleteGroup(token, group_id):
+  try:
+    url = f"http://127.0.0.1:8000/groups?group_id={group_id}"
+    
+    resp = anvil.http.request(url, method="DELETE", headers={"Authorization": token}, json = True, data='')    
+    
+    return True
+  
+  except Exception as e:
+    return False
 
 def addGroup(token, user_id, group_id_list):
   try:
@@ -119,6 +141,101 @@ def deleteUser(token, user_id):
   
   except:
     return False
+
+  
+# Sensores
+def getSensors(token):
+  try:   
+      headers= {
+        "Authorization": token
+      }
+      
+      resp = anvil.http.request(f"http://127.0.0.1:8000/sensors/list", method="GET", headers=headers, json=True, data='')
+      
+      return resp
+    
+  except:
+    return False
+
+def getSensor(token, sensor_id):
+  try:
+      url = f"http://127.0.0.1:8000/sensors?sensor_id={sensor_id}"
+      
+      headers= {
+        "Authorization": token
+      }
+      
+      resp = anvil.http.request(url, method="GET", headers=headers, json=True, data='')
+      
+      return resp
+    
+  except:
+    return False
+  
+def patchSensors(token,sensor_id, patch_json):
+  try:
+      url = f"http://127.0.0.1:8000/sensors?sensor_id={sensor_id}"
+      
+      headers= {
+        "Authorization": token
+      }
+      
+      anvil.http.request(url, method="PATCH", headers=headers, json=True, data = patch_json)
+      
+      return True
+    
+  except:
+    return False
+
+def addGroupSensor(token,sensor_id, group_name):
+  try:
+      url = f"http://127.0.0.1:8000/sensors/groups?sensor_id={sensor_id}&group_name={group_name}"
+      
+      headers= {
+        "Authorization": token
+      }
+      
+      anvil.http.request(url, method="POST", headers=headers, json=True, data = '')
+      
+      return True
+    
+  except:
+    return False
+
+def removeGroupSensor(token,sensor_id, group_name):
+  try:
+      url = f"http://127.0.0.1:8000/sensors/groups?sensor_id={sensor_id}&group_name={group_name}"
+      
+      headers= {
+        "Authorization": token
+      }
+      
+      anvil.http.request(url, method="DELETE", headers=headers, json=True, data = '')
+      
+      return True
+    
+  except:
+    return False
+
+def getTelemetryList(token):
+  try:
+      url = f"http://127.0.0.1:8000/telemetry/list"
+      
+      headers= {
+        "Authorization": token
+      }
+      
+      resp = anvil.http.request(url, method="GET", headers=headers, json=True, data='')
+      
+      return resp
+    
+  except:
+    return False
+  
+  
+  
+  
+  
   
 def sensor_builder(sensor_id):
     name_list = ["Temperature", "Humidity", "Potency"]

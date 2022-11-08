@@ -1,10 +1,10 @@
-from ._anvil_designer import ListaGruposTemplate
+from ._anvil_designer import SensorsListTemplate
 from anvil import *
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 
-class ListaGrupos(ListaGruposTemplate):
+class SensorsList(SensorsListTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
