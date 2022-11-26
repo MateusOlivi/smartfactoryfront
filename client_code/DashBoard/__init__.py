@@ -37,7 +37,7 @@ class DashBoard(DashBoardTemplate):
   def setItems(self):  
     self.sersors = self.prepareSensorList()
     
-    if(self.dropdown_sensors.selected_value != "Todos"):
+    if(self.dropdown_sensors.selected_value != "Todos Sensores"):
       self.sersors= [sensor for sensor in self.sersors if sensor["name"] == self.dropdown_sensors.selected_value]
 
     self.telemetry_data = self.prepareTelemetry()
@@ -87,7 +87,7 @@ class DashBoard(DashBoardTemplate):
     sensors_names = [sensor["name"] for sensor in sensor_list if routes.getTelemetry(self.token,sensor["sensor_id"]) != []]
     
     if(len(sensors_names) !=1):
-      sensors_names = ["Todos"] + sensors_names
+      sensors_names = ["Todos Sensores"] + sensors_names
       
     return sensors_names
       
