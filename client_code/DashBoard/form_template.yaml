@@ -4,6 +4,28 @@ components:
   name: content_panel
   layout_properties: {slot: default}
   components:
+  - type: DropDown
+    properties:
+      role: null
+      align: full
+      tooltip: ''
+      placeholder: Filtrar por tempo
+      border: ''
+      enabled: true
+      foreground: ''
+      items: []
+      visible: true
+      font_size: null
+      font: ''
+      spacing_above: small
+      spacing_below: small
+      italic: false
+      background: ''
+      bold: false
+      underline: false
+      include_placeholder: false
+    name: dropdown_time
+    layout_properties: {grid_position: 'HESKIP,KOACGC'}
   - type: RepeatingPanel
     properties: {role: null, tooltip: '', border: '', foreground: '', items: null,
       visible: true, spacing_above: small, spacing_below: small, item_template: DashBoard.SensorTemplate,

@@ -18,6 +18,16 @@ class DashBoard(DashBoardTemplate):
 
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    
+    self.translator = {
+      "Última Hora": 3600, 
+      "Últimos 30 minutos": 1800, 
+      "Ultimos 5 minutos": 300, 
+      "Ultimo dia": 84600, 
+      "Todo momento": None
+    }
+    
+    self.dropdown_time.items = list(self.translator.keys())
         
     self.setItems()
         
@@ -43,15 +53,18 @@ class DashBoard(DashBoardTemplate):
 
   def prepareTelemetry(self):
     data = {}
-    telemetry_data = routes.getTelemetryList(self.token)
+    
+    timefilter = self.translator[self.dropdown_time.selected_value]
+    
+    telemetry_data = routes.getTelemetryList(self.token, timefilter = timefilter)
 
     for sensor in self.sersors:
       my_id = sensor["sensor_id"]
       my_telemetry = [tele for tele in telemetry_data if tele["sensor_id"] == my_id]
       
       for telemetry in my_telemetry:
-#         if(datetime.timestamp(datetime.now()) - telemetry["inserted_at"]/1000 > 3600):
-#           continue
+        if(datetime.timestamp(datetime.now()) - telemetry["inserted_at"]/1000 > 3600):
+          continue
           
         my_type = telemetry["type"]
         
@@ -64,9 +77,9 @@ class DashBoard(DashBoardTemplate):
     
     return data
 
-#   def timer_1_tick(self, **event_args):
-#     with anvil.server.no_loading_indicator:
-#       self.setItems()
+  def timer_1_tick(self, **event_args):
+    with anvil.server.no_loading_indicator:
+      self.setItems()
 
 
   

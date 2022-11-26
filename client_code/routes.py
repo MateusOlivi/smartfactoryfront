@@ -217,9 +217,12 @@ def removeGroupSensor(token,sensor_id, group_name):
   except:
     return False
 
-def getTelemetryList(token):
+def getTelemetryList(token, timefilter):
   try:
-      url = f"http://localhost:8000/telemetry/list"
+      if(timefilter != None):
+        url = f"http://localhost:8000/telemetry/list?timefilter={timefilter}"
+      else:
+        url = f"http://localhost:8000/telemetry/list"
       
       headers= {
         "Authorization": token
