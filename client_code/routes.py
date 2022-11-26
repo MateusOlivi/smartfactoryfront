@@ -8,7 +8,7 @@ import json
 
 def authUser(user, pwd):
   try:
-    url = f"http://127.0.0.1:8000/authUser?username={user}&password={pwd}"
+    url = f"http://localhost:8000/authUser?username={user}&password={pwd}"
     
     resp = anvil.http.request(url, method="GET", json = True, data='')
     return resp
@@ -18,7 +18,7 @@ def authUser(user, pwd):
 
 def validate_token(token):
   try:
-    url = "http://127.0.0.1:8000/validate"
+    url = "http://localhost:8000/validate"
     
     headers= {
       "Authorization": token
@@ -33,7 +33,7 @@ def validate_token(token):
 
 def getUserList(token):
   try:
-    url = "http://127.0.0.1:8000/user/list/"
+    url = "http://localhost:8000/user/list/"
     resp = anvil.http.request(url, method="GET", headers={"Authorization": token}, json = True, data='')    
     return resp
   
@@ -42,7 +42,7 @@ def getUserList(token):
 
 def getUserGroups(token, user_id):
   try:
-    url = f"http://127.0.0.1:8000/userGroups?user_id={user_id}"
+    url = f"http://localhost:8000/userGroups?user_id={user_id}"
     resp = anvil.http.request(url, method="GET", headers={"Authorization": token}, json = True, data='')    
     return resp
   except Exception as e:
@@ -50,7 +50,7 @@ def getUserGroups(token, user_id):
 
 def getAllGroups(token):
   try:
-    resp = anvil.http.request("http://127.0.0.1:8000/groups/list", method="GET", headers={"Authorization": token}, json = True, data='')    
+    resp = anvil.http.request("http://localhost:8000/groups/list", method="GET", headers={"Authorization": token}, json = True, data='')    
     return resp
   
   except Exception as e:
@@ -58,7 +58,7 @@ def getAllGroups(token):
   
 def createGroup(token, group_name):
   try:
-    url = f"http://127.0.0.1:8000/groups?group_name={group_name}"
+    url = f"http://localhost:8000/groups?group_name={group_name}"
     
     resp = anvil.http.request(url, method="POST", headers={"Authorization": token}, json = True, data='')    
     
@@ -69,7 +69,7 @@ def createGroup(token, group_name):
 
 def deleteGroup(token, group_id):
   try:
-    url = f"http://127.0.0.1:8000/groups?group_id={group_id}"
+    url = f"http://localhost:8000/groups?group_id={group_id}"
     
     resp = anvil.http.request(url, method="DELETE", headers={"Authorization": token}, json = True, data='')    
     
@@ -90,7 +90,7 @@ def addGroup(token, user_id, group_id_list):
       "Authorization": token
     }
     
-    anvil.http.request("http://127.0.0.1:8000/userGroups", method="POST", data = payload, headers=headers)  
+    anvil.http.request("http://localhost:8000/userGroups", method="POST", data = payload, headers=headers)  
     
   except:
     return False
@@ -107,7 +107,7 @@ def removeGroup(token, user_id, group_id_list):
       "Authorization": token
     }
     
-    anvil.http.request("http://127.0.0.1:8000/userGroups", method="DELETE", data = payload, headers=headers)    
+    anvil.http.request("http://localhost:8000/userGroups", method="DELETE", data = payload, headers=headers)    
     return True
   
   except:
@@ -122,7 +122,7 @@ def createUser(token, payload):
       "Authorization": token
     }
     
-    anvil.http.request("http://127.0.0.1:8000/user", method="POST", data = payload, headers=headers)    
+    anvil.http.request("http://localhost:8000/user", method="POST", data = payload, headers=headers)    
     return True
   
   except:
@@ -135,7 +135,7 @@ def deleteUser(token, user_id):
       "Authorization": token
     }
     
-    anvil.http.request(f"http://127.0.0.1:8000/user?user_id={user_id}", method="DELETE", headers=headers, data='')
+    anvil.http.request(f"http://localhost:8000/user?user_id={user_id}", method="DELETE", headers=headers, data='')
     
     return True
   
@@ -150,7 +150,7 @@ def getSensors(token):
         "Authorization": token
       }
       
-      resp = anvil.http.request(f"http://127.0.0.1:8000/sensors/list", method="GET", headers=headers, json=True, data='')
+      resp = anvil.http.request(f"http://localhost:8000/sensors/list", method="GET", headers=headers, json=True, data='')
       
       return resp
     
@@ -159,7 +159,7 @@ def getSensors(token):
 
 def getSensor(token, sensor_id):
   try:
-      url = f"http://127.0.0.1:8000/sensors?sensor_id={sensor_id}"
+      url = f"http://localhost:8000/sensors?sensor_id={sensor_id}"
       
       headers= {
         "Authorization": token
@@ -174,7 +174,7 @@ def getSensor(token, sensor_id):
   
 def patchSensors(token,sensor_id, patch_json):
   try:
-      url = f"http://127.0.0.1:8000/sensors?sensor_id={sensor_id}"
+      url = f"http://localhost:8000/sensors?sensor_id={sensor_id}"
       
       headers= {
         "Authorization": token
@@ -189,7 +189,7 @@ def patchSensors(token,sensor_id, patch_json):
 
 def addGroupSensor(token,sensor_id, group_name):
   try:
-      url = f"http://127.0.0.1:8000/sensors/groups?sensor_id={sensor_id}&group_name={group_name}"
+      url = f"http://localhost:8000/sensors/groups?sensor_id={sensor_id}&group_name={group_name}"
       
       headers= {
         "Authorization": token
@@ -204,7 +204,7 @@ def addGroupSensor(token,sensor_id, group_name):
 
 def removeGroupSensor(token,sensor_id, group_name):
   try:
-      url = f"http://127.0.0.1:8000/sensors/groups?sensor_id={sensor_id}&group_name={group_name}"
+      url = f"http://localhost:8000/sensors/groups?sensor_id={sensor_id}&group_name={group_name}"
       
       headers= {
         "Authorization": token
@@ -219,7 +219,7 @@ def removeGroupSensor(token,sensor_id, group_name):
 
 def getTelemetryList(token):
   try:
-      url = f"http://127.0.0.1:8000/telemetry/list"
+      url = f"http://localhost:8000/telemetry/list"
       
       headers= {
         "Authorization": token
