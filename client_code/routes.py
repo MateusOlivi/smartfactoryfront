@@ -217,12 +217,9 @@ def removeGroupSensor(token,sensor_id, group_name):
   except:
     return False
 
-def getTelemetryList(token, timefilter):
+def getTelemetryList(token):
   try:
-      if(timefilter != None):
-        url = f"http://localhost:8000/telemetry/list?timefilter={timefilter}"
-      else:
-        url = f"http://localhost:8000/telemetry/list"
+      url = f"http://localhost:8000/telemetry/list"
       
       headers= {
         "Authorization": token
@@ -235,7 +232,20 @@ def getTelemetryList(token, timefilter):
   except:
     return False
   
-  
+def getTelemetry(token, sensor_id):
+  try:
+      url = f"http://localhost:8000/telemetry?sensor_id={sensor_id}"
+      
+      headers= {
+        "Authorization": token
+      }
+      
+      resp = anvil.http.request(url, method="GET", headers=headers, json=True, data='')
+      
+      return resp
+    
+  except:
+    return False
   
   
   

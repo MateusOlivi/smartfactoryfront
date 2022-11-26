@@ -20,25 +20,32 @@ class DashBoard(DashBoardTemplate):
     self.init_components(**properties)
     
     self.translator = {
+      "Todo momento": None,
       "Última Hora": 3600, 
       "Últimos 30 minutos": 1800, 
       "Ultimos 5 minutos": 300, 
-      "Ultimo dia": 84600, 
-      "Todo momento": None
+      "Ultimo dia": 84600 
     }
     
     self.dropdown_time.items = list(self.translator.keys())
-        
+      
+    self.dropdown_sensors.items = self.prepareDropdown()
+    
     self.setItems()
         
   # Any code you write here will run when the form opens.
   def setItems(self):  
     self.sersors = self.prepareSensorList()
+    
+    if(self.dropdown_sensors.selected_value != "Todos"):
+      self.sersors= [sensor for sensor in self.sersors if sensor["name"] == self.dropdown_sensors.selected_value]
+
     self.telemetry_data = self.prepareTelemetry()
     
     my_items = [{
       "telemetry": data["telemetry"],
-      "sensor": data["sensor"]
+      "sensor": data["sensor"],
+      "time": self.translator[self.dropdown_time.selected_value]
     } for data in self.telemetry_data.values()]
     
     self.repeating_panel_1.items = my_items
@@ -53,18 +60,15 @@ class DashBoard(DashBoardTemplate):
 
   def prepareTelemetry(self):
     data = {}
-    
-    timefilter = self.translator[self.dropdown_time.selected_value]
-    
-    telemetry_data = routes.getTelemetryList(self.token, timefilter = timefilter)
+    telemetry_data = routes.getTelemetryList(self.token)
 
     for sensor in self.sersors:
       my_id = sensor["sensor_id"]
       my_telemetry = [tele for tele in telemetry_data if tele["sensor_id"] == my_id]
       
       for telemetry in my_telemetry:
-        if(datetime.timestamp(datetime.now()) - telemetry["inserted_at"]/1000 > 3600):
-          continue
+#         if(datetime.timestamp(datetime.now()) - telemetry["inserted_at"]/1000 > 3600):
+#           continue
           
         my_type = telemetry["type"]
         
@@ -76,10 +80,28 @@ class DashBoard(DashBoardTemplate):
         data[(my_id, my_type)]["telemetry"].append(telemetry)
     
     return data
-
+  
+  def prepareDropdown(self):
+    sensor_list = self.prepareSensorList()
+      
+    sensors_names = [sensor["name"] for sensor in sensor_list if routes.getTelemetry(self.token,sensor["sensor_id"]) != []]
+    
+    if(len(sensors_names) !=1):
+      sensors_names = ["Todos"] + sensors_names
+      
+    return sensors_names
+      
   def timer_1_tick(self, **event_args):
     with anvil.server.no_loading_indicator:
       self.setItems()
+
+  def dropdown_sensors_change(self, **event_args):
+    self.setItems()
+
+  def dropdown_time_change(self, **event_args):
+    self.setItems()
+
+
 
 
   
