@@ -54,7 +54,7 @@ components:
   name: menu_lateral_1
   layout_properties: {slot: left-nav}
 - type: Timer
-  properties: {interval: 0.1}
+  properties: {interval: 2}
   name: timer_1
   event_bindings: {tick: timer_1_tick}
 container:
