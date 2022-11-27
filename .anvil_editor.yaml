@@ -20,7 +20,8 @@ unique_ids:
   modules:
     functions: TMINS64CGVKJWRGQRWB2UP7YK5OYPQRA
     routes: LTWIRSS4WZ3VOBXGCMJ5MOS7WYBH5LTZ
-  server_modules: {}
+  server_modules:
+    APIs: MMME3MIDAMOI2QEQDKTEMVJVKGYBVOBB
   assets:
     standard-page.html: GYBQYUM6YU5JU6IBUF4AMO5LMUIUODFV
     theme.css: DKRRQUP4N4VIASSADC62WKC6EZPU47II
