@@ -17,24 +17,5 @@ metadata: {}
 startup_form: Login
 native_deps: {head_html: ''}
 db_schema:
-  revenue:
-    title: Revenue
-    client: none
-    server: full
-    columns:
-    - name: amount
-      admin_ui: {width: 200}
-      type: number
-    - name: date
-      admin_ui: {width: 200}
-      type: date
-  limite:
-    title: Limite
-    client: none
-    server: full
-    columns:
-    - name: Limite
-      admin_ui: {width: 200}
-      type: number
 secrets: {}
 renamed: true
