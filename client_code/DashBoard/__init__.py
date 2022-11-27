@@ -9,7 +9,7 @@ import plotly.graph_objects as go
 import anvil.server
 from datetime import datetime
 from anvil.js.window import localStorage, sessionStorage
-#from .. import routes
+from .. import routes
 
 class DashBoard(DashBoardTemplate):
   def __init__(self, **properties):
@@ -54,18 +54,15 @@ class DashBoard(DashBoardTemplate):
     
   def prepareSensorList(self):
     if(self.sensor_id == None):
-      #sensor_list = routes.getSensors(self.token)
-      sensor_list = anvil.server.call('getSensors', self.token)
+      sensor_list = routes.getSensors(self.token)
     else:
-      #sensor_list = [routes.getSensor(self.token, self.sensor_id)]
-      sensor_list = [anvil.server.call('getSensor', self.token, self.sensor_id)]
+      sensor_list = [routes.getSensor(self.token, self.sensor_id)]
 
     return sensor_list
 
   def prepareTelemetry(self):
     data = {}
-    #telemetry_data = routes.getTelemetryList(self.token)
-    telemetry_data = anvil.server.call("getTelemetryList",self.token)
+    telemetry_data = routes.getTelemetryList(self.token)
 
     for sensor in self.sersors:
       my_id = sensor["sensor_id"]
@@ -89,7 +86,7 @@ class DashBoard(DashBoardTemplate):
   def prepareDropdown(self):
     sensor_list = self.prepareSensorList()
       
-    sensors_names = [sensor["name"] for sensor in sensor_list if anvil.server.call("getTelemetry", self.token,sensor["sensor_id"]) != []]
+    sensors_names = [sensor["name"] for sensor in sensor_list if routes.getTelemetry(self.token, sensor["sensor_id"]) != []]
     
     if(len(sensors_names) !=1):
       sensors_names = ["Todos Sensores"] + sensors_names
@@ -97,7 +94,7 @@ class DashBoard(DashBoardTemplate):
     return sensors_names
       
   def timer_1_tick(self, **event_args):
-    with anvil.server.no_loading_indicator as p:
+    with anvil.server.no_loading_indicator:
       self.setItems()
 
   def dropdown_sensors_change(self, **event_args):
