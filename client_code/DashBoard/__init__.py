@@ -94,8 +94,7 @@ class DashBoard(DashBoardTemplate):
     return sensors_names
       
   def timer_1_tick(self, **event_args):
-    with anvil.server.no_loading_indicator:
-      self.setItems()
+    self.setItems()
 
   def dropdown_sensors_change(self, **event_args):
     self.setItems()

@@ -1,6 +1,6 @@
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{}'}
+  properties: {col_widths: '{"KOACGC":20,"LOZWXJ":30}'}
   name: content_panel
   layout_properties: {slot: default}
   components:
