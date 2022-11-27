@@ -766,3 +766,20 @@ textarea.anvil-component[disabled] {
 https://stackoverflow.com/questions/30533055/calculating-shadow-values-for-all-material-design-elevations
 */
 
+/*
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+#loadingSpinner {
+    -webkit-animation:spin 2s linear infinite;
+    -moz-animation:spin 2s linear infinite;
+    animation:spin 2s linear infinite;
+    width: 0px;
+    height:0px;
+    border-radius: 0;
+    box-shadow: none;/*0px 0px 10px 10px #fcfcfc;*/
+    background-color: none;
+    background-image: none
+}
+*/

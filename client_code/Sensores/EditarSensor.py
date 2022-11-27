@@ -1,5 +1,6 @@
 from ._anvil_designer import EditarSensorTemplate
 from anvil import *
+import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
@@ -49,6 +50,7 @@ class EditarSensor(EditarSensorTemplate):
       
       if(success):
         alert(content="Os dados do sensor foram atualizados", title="Sucesso", large=True)
+        open_form('Sensores')
       else:
         alert(content="Houve um erro ao atualizar os dados do sensor", title="Erro", large=True)
     
