@@ -50,6 +50,7 @@ class EditarSensor(EditarSensorTemplate):
       
       if(success):
         alert(content="Os dados do sensor foram atualizados", title="Sucesso", large=True)
+        open_form('Sensores')
       else:
         alert(content="Houve um erro ao atualizar os dados do sensor", title="Erro", large=True)
     

@@ -22,9 +22,10 @@ class DashBoard(DashBoardTemplate):
     
     self.translator = {
       "Todo momento": None,
-      "Última Hora": 3600, 
+      "Ultimo minuto": 60,
+      "Ultimos 5 minutos": 300,
       "Últimos 30 minutos": 1800, 
-      "Ultimos 5 minutos": 300, 
+      "Última Hora": 3600, 
       "Ultimo dia": 84600 
     }
     
