@@ -1,5 +1,6 @@
 from ._anvil_designer import SensorTemplateTemplate
 from anvil import *
+import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
@@ -21,11 +22,18 @@ class SensorTemplate(SensorTemplateTemplate):
     self.type.text = my_type
     self.upper_limit.text = upper_limit if upper_limit != None else "Não definido"
     self.bottom_limit.text = bottom_limit if bottom_limit != None else "Não definido"
+        
+    if(self.item["time"] != None):
+      self.item['telemetry'] =[x for x in self.item['telemetry'] 
+                             if (datetime.timestamp(datetime.now()) - x["inserted_at"]/1000) <= self.item["time"]]
     
-    self.last_value.text = max(self.item['telemetry'], key = lambda x: x["inserted_at"])["value"]
+    if(len(self.item['telemetry']) != 0):
+      self.last_value.text = max(self.item['telemetry'], key = lambda x: x["inserted_at"])["value"]
+    else:
+      self.last_value.text = "-"
+      
     self.plot_data(self.item['telemetry'])
-    
-            
+          
   def plot_data(self, data):                        
     self.plot_1.data= go.Scatter(
                     x = [datetime.fromtimestamp(x['inserted_at']/1000) for x in data],

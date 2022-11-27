@@ -1,5 +1,6 @@
 from ._anvil_designer import SensoresTemplate
 from anvil import *
+import anvil.server
 
 from anvil.js.window import localStorage, sessionStorage
 from .. import routes

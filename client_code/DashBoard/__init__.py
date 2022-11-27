@@ -1,5 +1,6 @@
 from ._anvil_designer import DashBoardTemplate
 from anvil import *
+import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
@@ -18,17 +19,35 @@ class DashBoard(DashBoardTemplate):
 
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-        
+    
+    self.translator = {
+      "Todo momento": None,
+      "Ultimo minuto": 60,
+      "Ultimos 5 minutos": 300,
+      "Últimos 30 minutos": 1800, 
+      "Última Hora": 3600, 
+      "Ultimo dia": 84600 
+    }
+    
+    self.dropdown_time.items = list(self.translator.keys())
+      
+    self.dropdown_sensors.items = self.prepareDropdown()
+    
     self.setItems()
         
   # Any code you write here will run when the form opens.
   def setItems(self):  
     self.sersors = self.prepareSensorList()
+    
+    if(self.dropdown_sensors.selected_value != "Todos Sensores"):
+      self.sersors= [sensor for sensor in self.sersors if sensor["name"] == self.dropdown_sensors.selected_value]
+
     self.telemetry_data = self.prepareTelemetry()
     
     my_items = [{
       "telemetry": data["telemetry"],
-      "sensor": data["sensor"]
+      "sensor": data["sensor"],
+      "time": self.translator[self.dropdown_time.selected_value]
     } for data in self.telemetry_data.values()]
     
     self.repeating_panel_1.items = my_items
@@ -38,7 +57,7 @@ class DashBoard(DashBoardTemplate):
       sensor_list = routes.getSensors(self.token)
     else:
       sensor_list = [routes.getSensor(self.token, self.sensor_id)]
-    
+
     return sensor_list
 
   def prepareTelemetry(self):
@@ -63,10 +82,28 @@ class DashBoard(DashBoardTemplate):
         data[(my_id, my_type)]["telemetry"].append(telemetry)
     
     return data
+  
+  def prepareDropdown(self):
+    sensor_list = self.prepareSensorList()
+      
+    sensors_names = [sensor["name"] for sensor in sensor_list if routes.getTelemetry(self.token, sensor["sensor_id"]) != []]
+    
+    if(len(sensors_names) !=1):
+      sensors_names = ["Todos Sensores"] + sensors_names
+      
+    return sensors_names
+      
+  def timer_1_tick(self, **event_args):
+    with anvil.server.no_loading_indicator:
+      self.setItems()
 
-#   def timer_1_tick(self, **event_args):
-#     with anvil.server.no_loading_indicator:
-#       self.setItems()
+  def dropdown_sensors_change(self, **event_args):
+    self.setItems()
+
+  def dropdown_time_change(self, **event_args):
+    self.setItems()
+
+
 
 
   
