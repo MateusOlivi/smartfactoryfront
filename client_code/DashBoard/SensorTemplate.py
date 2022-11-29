@@ -28,7 +28,12 @@ class SensorTemplate(SensorTemplateTemplate):
                              if (datetime.timestamp(datetime.now()) - x["inserted_at"]/1000) <= self.item["time"]]
     
     if(len(self.item['telemetry']) != 0):
-      self.last_value.text = max(self.item['telemetry'], key = lambda x: x["inserted_at"])["value"]
+      last_val = max(self.item['telemetry'], key = lambda x: x["inserted_at"])["value"]
+      self.last_value.text = last_val
+      
+      if upper_limit != None and bottom_limit != None:
+        if(float(last_val) > float(upper_limit) or float(last_val) < float(bottom_limit)):
+          self.last_value.foreground = "#f00"
     else:
       self.last_value.text = "-"
       
